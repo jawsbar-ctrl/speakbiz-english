@@ -9564,8 +9564,14 @@ ${rawText.slice(0, 15000)}
       <h3 class="text-lg font-bold text-white flex items-center gap-2">
         <i class="ph-bold ph-key text-blue-400"></i> Gemini API Key 설정
       </h3>
-      <p class="text-xs text-slate-400 leading-relaxed">Google AI Studio에서 발급받은 API 키를 입력하세요. <span class="text-amber-300 font-semibold">[인증 및 저장]</span>을 누르면 연결 테스트와 저장이 한 번에 진행됩니다.</p>
-      <input id="geminiApiKeyInput" type="password" placeholder="AIzaSy..." 
+      <p class="text-xs text-slate-400 leading-relaxed">Google AI Studio에서 발급받은 API 키를 입력하세요. <span class="text-amber-300 font-semibold">[인증 및 저장]</span>을 누르면 연결 테스트와 저장이 완료됩니다.</p>
+      <div class="flex items-center justify-between text-[11px] text-slate-400 bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800">
+        <span>🔑 무료 API 키가 없으신가요?</span>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-bold flex items-center gap-0.5">
+          Google AI Studio에서 무료 발급 <i class="ph-bold ph-arrow-square-out text-xs"></i>
+        </a>
+      </div>
+      <input id="geminiApiKeyInput" type="password" placeholder="Gemini API 키를 여기에 붙여넣으세요" 
         onkeydown="if(event.key==='Enter') app.saveApiKey()"
         class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 font-mono">
       <div id="apiKeyStatus" class="text-xs text-slate-400 min-h-[20px]"></div>
