@@ -1,0 +1,19 @@
+{
+  "name": "수안이네 영어공부방 - SpeakBiz AI",
+  "short_name": "영어공부방",
+  "description": "스픽 스타일 3단계 AI 실전 비즈니스 영어 회화 & 스피킹 튜터",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

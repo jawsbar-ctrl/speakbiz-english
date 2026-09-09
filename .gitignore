@@ -1,0 +1,24 @@
+# Private Keys & Secrets (절대 공개되지 않도록 보호)
+제미나이.txt
+*.key
+*.env
+*.env.local
+*.env.*.local
+
+# Windows Shortcuts & Local scripts
+영어공부방 실행 (바로가기).lnk
+*.lnk
+check.py
+fix.py
+restore.ps1
+restore2.ps1
+index_base.html
+
+# Local system & editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/
+.tempmediaStorage/
+.user_uploaded/
