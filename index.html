@@ -454,7 +454,8 @@
     body.light-mode #modalSettings > div,
     body.light-mode #modalApiKey > div,
     body.light-mode #modalUserProfiles > div,
-    body.light-mode #modalUploadMovieScript > div {
+    body.light-mode #modalUploadMovieScript > div,
+    body.light-mode #modalAddCustomTopic > div {
       background-color: #ffffff !important;
       border-color: #e2e8f0 !important;
       color: #0f172a !important;
@@ -1132,14 +1133,19 @@
         </div>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-        <button onclick="app.filterScenarios('all')" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-md shadow-blue-500/20">전체 시나리오</button>
-        <button onclick="app.filterScenarios('meeting')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">회의 & 토론</button>
-        <button onclick="app.filterScenarios('call')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">이메일 & 전화</button>
-        <button onclick="app.filterScenarios('presentation')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">발표 & Q&A</button>
-        <button onclick="app.filterScenarios('negotiation')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">협상 & 계약</button>
-        <button onclick="app.filterScenarios('interview')" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800">영어 면접</button>
+      <!-- Category Filter Tabs & Custom Topic Addition Bar -->
+      <div class="flex items-center justify-between gap-3 overflow-x-auto pb-2 scrollbar-none">
+        <div id="categoryFilterTabs" class="flex items-center gap-2 shrink-0">
+          <button onclick="app.filterScenarios('all', this)" class="cat-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-md shadow-blue-500/20 whitespace-nowrap">전체 시나리오</button>
+          <button onclick="app.filterScenarios('meeting', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 whitespace-nowrap">회의 & 토론</button>
+          <button onclick="app.filterScenarios('call', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 whitespace-nowrap">이메일 & 전화</button>
+          <button onclick="app.filterScenarios('presentation', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 whitespace-nowrap">발표 & Q&A</button>
+          <button onclick="app.filterScenarios('negotiation', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 whitespace-nowrap">협상 & 계약</button>
+          <button onclick="app.filterScenarios('interview', this)" class="cat-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800 whitespace-nowrap">영어 면접</button>
+        </div>
+        <button id="btnOpenAddCustomTopic" onclick="app.showAddTopicModal()" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold transition bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-md shadow-blue-500/20 active:scale-95 flex items-center gap-1.5 shrink-0 whitespace-nowrap ml-auto">
+          <i class="ph-bold ph-plus-circle text-base text-amber-300"></i> 새 주제 추가
+        </button>
       </div>
 
       <!-- Scenario Cards Grid -->
@@ -2113,6 +2119,180 @@
       </div>
     </div>
 
+    <!-- VIEW 8: CUSTOM TOPIC CREATION MODAL (새로운 주제/시나리오 추가 및 AI 자동 완성) -->
+    <div id="modalAddCustomTopic" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn overflow-y-auto">
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-2xl w-full p-5 sm:p-7 space-y-5 shadow-2xl my-6 max-h-[90vh] overflow-y-auto scrollbar-none">
+        
+        <!-- Header -->
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-xl shadow-md">
+              <i class="ph-bold ph-sparkle text-amber-300"></i>
+            </div>
+            <div>
+              <h3 class="text-base sm:text-lg font-extrabold text-white">나만의 새로운 학습 주제 추가</h3>
+              <p class="text-xs text-slate-400">배우고 싶은 비즈니스나 일상 대화 주제를 적으면, AI가 3단계 코스를 뚝딱 만들어 드려요.</p>
+            </div>
+          </div>
+          <button onclick="app.hideAddTopicModal()" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition" title="닫기">
+            <i class="ph-bold ph-x text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Quick Preset Recommendation Chips -->
+        <div class="space-y-2">
+          <label class="block text-xs font-bold text-slate-300 flex items-center gap-1.5">
+            <i class="ph-bold ph-magic-wand text-indigo-400"></i> 빠른 추천 주제 (클릭 한 번으로 채우기)
+          </label>
+          <div class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+            <button type="button" onclick="app.applyTopicPreset('smalltalk')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-medium transition shrink-0 whitespace-nowrap">
+              ☕ 일상 스몰토크 & 친목
+            </button>
+            <button type="button" onclick="app.applyTopicPreset('hotel')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-medium transition shrink-0 whitespace-nowrap">
+              ✈️ 해외 출장 & 호텔 체크인
+            </button>
+            <button type="button" onclick="app.applyTopicPreset('dinner')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-medium transition shrink-0 whitespace-nowrap">
+              🍽️ 바이어 비즈니스 식사
+            </button>
+            <button type="button" onclick="app.applyTopicPreset('complaint')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-medium transition shrink-0 whitespace-nowrap">
+              ⚠️ 고객 불만 클레임 해결
+            </button>
+            <button type="button" onclick="app.applyTopicPreset('kickoff')" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 font-medium transition shrink-0 whitespace-nowrap">
+              🚀 신규 프로젝트 킥오프
+            </button>
+          </div>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="space-y-4">
+          <!-- Topic Title -->
+          <div>
+            <label class="block text-xs font-bold text-slate-200 mb-1.5 flex items-center justify-between">
+              <span>학습 주제 및 상황 제목 <span class="text-rose-400">*</span></span>
+              <span class="text-[11px] text-slate-400 font-normal">원하는 어떤 상황도 좋아요</span>
+            </label>
+            <input id="customTopicTitle" type="text" placeholder="예: 해외 바이어와 저녁 식사 및 스몰토크, 호텔 룸 변경 요청" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+          </div>
+
+          <!-- Category Selection -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-200 mb-1.5">카테고리 분류</label>
+              <select id="customTopicCategorySelect" onchange="app.onTopicCategoryChange(this.value)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                <option value="networking">네트워킹 & 친목</option>
+                <option value="travel">출장 & 여행</option>
+                <option value="meeting">회의 & 토론</option>
+                <option value="call">이메일 & 전화</option>
+                <option value="presentation">발표 & Q&A</option>
+                <option value="negotiation">협상 & 계약</option>
+                <option value="interview">영어 면접</option>
+                <option value="custom_new">+ 새로운 카테고리 직접 입력...</option>
+              </select>
+            </div>
+            <div id="customCategoryInputGroup" class="hidden">
+              <label class="block text-xs font-bold text-slate-200 mb-1.5">새 카테고리 이름 입력</label>
+              <input id="customTopicCategoryCustom" type="text" placeholder="예: 고객 서비스 & CS, 투자 유치" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-blue-500">
+            </div>
+            <div id="customTopicLevelGroup">
+              <label class="block text-xs font-bold text-slate-200 mb-1.5">학습 난이도</label>
+              <select id="customTopicLevel" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-blue-500">
+                <option value="초급">초급 (기본 회화)</option>
+                <option value="초급 ~ 중급" selected>초급 ~ 중급 (실무 기본 회화)</option>
+                <option value="중급 ~ 고급">중급 ~ 고급 (프로페셔널 비즈니스)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Persona & Partner -->
+          <div>
+            <label class="block text-xs font-bold text-slate-200 mb-1.5 flex items-center justify-between">
+              <span>대화 상대방 (페르소나)</span>
+              <span class="text-[11px] text-slate-400 font-normal">비워두면 AI가 자연스럽게 정해 드려요</span>
+            </label>
+            <input id="customTopicPersona" type="text" placeholder="예: James Wilson (글로벌 바이어 총괄 매니저)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition">
+          </div>
+
+          <!-- AI Auto-Generation Action Box -->
+          <div class="p-4 rounded-2xl bg-gradient-to-r from-blue-950/40 via-indigo-950/40 to-purple-950/40 border border-indigo-500/30 space-y-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2 text-indigo-300 text-xs font-bold">
+                <i class="ph-bold ph-cpu text-base"></i>
+                <span>Gemini AI 3단계 자동 커리큘럼 생성</span>
+              </div>
+              <span class="text-[11px] text-emerald-400 font-bold bg-emerald-950/50 px-2 py-0.5 rounded-md border border-emerald-500/30">
+                원클릭 완성
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-300 leading-relaxed">
+              입력하신 주제를 바탕으로 **1단계 패턴 드릴 문장**, **2단계 3-Step 롤플레잉 미션**, **추천 비즈니스 표현 5종**을 AI가 자동으로 설계해 드려요.
+            </p>
+            <div class="flex items-center gap-2">
+              <button id="btnGenerateTopicAI" type="button" onclick="app.generateCustomTopicAI()" class="flex-1 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white text-xs font-extrabold shadow-md shadow-indigo-600/30 flex items-center justify-center gap-2 transition active:scale-95">
+                <i class="ph-bold ph-sparkle text-amber-300"></i>
+                <span>⚡ AI로 3단계 학습 코스 자동 완성</span>
+              </button>
+            </div>
+            <!-- Loading Status Indicator -->
+            <div id="topicAiGeneratingStatus" class="hidden text-xs text-center p-3 rounded-xl bg-slate-900 border border-indigo-500/40 text-indigo-300 font-bold animate-pulse">
+              <i class="ph-bold ph-circle-notch animate-spin"></i> 맞춤 3단계 시나리오와 표현을 정성껏 생성하고 있어요... (약 2~4초)
+            </div>
+          </div>
+
+          <!-- Generated Preview Container (Accordion / Preview) -->
+          <div id="customTopicPreviewContainer" class="hidden space-y-3 p-4 rounded-2xl bg-slate-950/80 border border-slate-800 animate-fadeIn">
+            <div class="flex items-center justify-between border-b border-slate-800/80 pb-2">
+              <div class="text-xs font-bold text-blue-400 flex items-center gap-1.5">
+                <i class="ph-bold ph-check-circle text-emerald-400"></i> 생성된 학습 코스 미리보기
+              </div>
+              <span class="text-[10px] text-slate-400">필요 시 아래 내용을 직접 다듬으실 수 있어요</span>
+            </div>
+            
+            <!-- Description -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-400 mb-1">상황 배경 설명</label>
+              <textarea id="customPreviewDesc" rows="2" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500 leading-relaxed"></textarea>
+            </div>
+
+            <!-- Stage 1 Drill Pattern -->
+            <div class="p-3 rounded-xl bg-blue-950/30 border border-blue-500/20 space-y-1.5">
+              <div class="text-[11px] font-bold text-blue-300 flex items-center gap-1">
+                <span>1단계 핵심 패턴 드릴</span>
+              </div>
+              <input id="customPreviewDrillEn" type="text" placeholder="영어 드릴 문장" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-blue-500">
+              <input id="customPreviewDrillKo" type="text" placeholder="한국어 뜻" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-blue-500">
+              <input id="customPreviewDrillTip" type="text" placeholder="발음 및 실무 활용 팁" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-[11px] text-amber-300 focus:outline-none focus:border-blue-500">
+            </div>
+
+            <!-- Stage 2 Missions -->
+            <div class="p-3 rounded-xl bg-purple-950/30 border border-purple-500/20 space-y-1.5">
+              <div class="text-[11px] font-bold text-purple-300">2단계 롤플레잉 3-Step 미션</div>
+              <input id="customPreviewMission1" type="text" placeholder="1단계 미션" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500">
+              <input id="customPreviewMission2" type="text" placeholder="2단계 미션" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500">
+              <input id="customPreviewMission3" type="text" placeholder="3단계 미션" class="w-full bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-purple-500">
+            </div>
+
+            <!-- Persona Initial Greeting -->
+            <div>
+              <label class="block text-[11px] font-bold text-slate-400 mb-1">상대방의 첫인사 (Initial Greeting)</label>
+              <input id="customPreviewGreeting" type="text" placeholder="상대방이 먼저 건네는 영어 첫인사" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer Actions -->
+        <div class="flex items-center justify-end gap-2 pt-3 border-t border-slate-800">
+          <button type="button" onclick="app.hideAddTopicModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">
+            취소
+          </button>
+          <button id="btnSaveCustomTopic" type="button" onclick="app.saveAndStartCustomTopic()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-extrabold shadow-md shadow-blue-600/30 flex items-center gap-1.5 transition active:scale-95">
+            <i class="ph-bold ph-floppy-disk text-amber-300"></i>
+            <span>학습 시나리오 저장 및 시작</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Global Floating Word Dictionary Popover (단어 호버 사전 툴팁) -->
     <div id="wordDictTooltip" class="fixed hidden z-[99999] pointer-events-auto bg-slate-900/95 text-white backdrop-blur-md border border-blue-500/50 rounded-2xl p-3.5 shadow-2xl max-w-xs transition-all duration-150 transform scale-95 opacity-0" onmouseenter="app.cancelHideWordDictTooltip()" onmouseleave="app.scheduleHideWordDictTooltip()">
       <!-- 상단: 단어, 발음/저장 버튼, 품사 배지, 닫기 버튼 -->
@@ -2266,7 +2446,7 @@
     // ==========================================
     // 1. BUSINESS SCENARIO DATABASE
     // ==========================================
-    const SCENARIOS = [
+    const BUILTIN_SCENARIOS = [
       {
         id: 'meeting-progress',
         category: 'meeting',
@@ -2673,6 +2853,7 @@
         }
       }
     ];
+    let SCENARIOS = [...BUILTIN_SCENARIOS];
 
     // ==========================================
     // 0.1 MOVIE SCRIPTS PRESET DATABASE (명작 영화 대본 프리셋 데이터베이스)
@@ -4639,6 +4820,8 @@
           }
         } catch(e) {}
 
+        this.currentFilterCat = 'all';
+        this.initCustomScenarios();
         this.initUserProfiles();
         this.initMovieScripts();
         this.applyTheme(this.theme);
@@ -5454,6 +5637,501 @@
         }
       }
 
+      // ==========================================
+      // 1.1 CUSTOM LEARNING TOPIC & SCENARIO ENGINE (맞춤 주제 및 시나리오 관리)
+      // ==========================================
+      initCustomScenarios() {
+        this.loadCustomScenarios();
+        this.renderCategoryFilterTabs();
+      }
+
+      loadCustomScenarios() {
+        try {
+          const raw = localStorage.getItem('speakbiz_custom_scenarios');
+          const custom = raw ? JSON.parse(raw) : [];
+          if (Array.isArray(custom)) {
+            SCENARIOS = [...BUILTIN_SCENARIOS, ...custom];
+          } else {
+            SCENARIOS = [...BUILTIN_SCENARIOS];
+          }
+        } catch (e) {
+          console.warn("커스텀 시나리오를 불러오는 중 오류가 발생했습니다:", e);
+          SCENARIOS = [...BUILTIN_SCENARIOS];
+        }
+      }
+
+      getCustomScenarios() {
+        try {
+          const raw = localStorage.getItem('speakbiz_custom_scenarios');
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      saveCustomScenario(scenario) {
+        try {
+          const list = this.getCustomScenarios();
+          list.push(scenario);
+          localStorage.setItem('speakbiz_custom_scenarios', JSON.stringify(list));
+          this.loadCustomScenarios();
+          this.renderCategoryFilterTabs();
+          this.renderScenarios(this.currentFilterCat || 'all');
+          return true;
+        } catch (e) {
+          console.error("맞춤 주제 저장 중 오류 발생:", e);
+          alert("주제를 저장하는 중 오류가 발생했습니다.");
+          return false;
+        }
+      }
+
+      deleteCustomScenario(scenarioId) {
+        const scenario = SCENARIOS.find(s => s.id === scenarioId);
+        const title = scenario ? scenario.title : '이 맞춤 주제';
+        if (!confirm(`'${title}' 맞춤 학습 주제를 정말 삭제할까요?`)) {
+          return;
+        }
+
+        try {
+          let list = this.getCustomScenarios();
+          list = list.filter(s => s.id !== scenarioId);
+          localStorage.setItem('speakbiz_custom_scenarios', JSON.stringify(list));
+          this.loadCustomScenarios();
+          this.renderCategoryFilterTabs();
+          this.renderScenarios(this.currentFilterCat || 'all');
+          alert(`'${title}' 맞춤 주제가 삭제되었어요.`);
+        } catch (e) {
+          console.error("맞춤 주제 삭제 실패:", e);
+        }
+      }
+
+      showAddTopicModal() {
+        const modal = document.getElementById('modalAddCustomTopic');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+
+        // 입력창이 비어있으면 첫 추천 프리셋 기본 채움
+        const titleInput = document.getElementById('customTopicTitle');
+        if (!titleInput.value) {
+          this.applyTopicPreset('smalltalk');
+        }
+      }
+
+      hideAddTopicModal() {
+        const modal = document.getElementById('modalAddCustomTopic');
+        if (modal) modal.classList.add('hidden');
+      }
+
+      onTopicCategoryChange(val) {
+        const customGroup = document.getElementById('customCategoryInputGroup');
+        if (customGroup) {
+          if (val === 'custom_new') {
+            customGroup.classList.remove('hidden');
+            const input = document.getElementById('customTopicCategoryCustom');
+            if (input) input.focus();
+          } else {
+            customGroup.classList.add('hidden');
+          }
+        }
+      }
+
+      applyTopicPreset(presetId) {
+        const titleEl = document.getElementById('customTopicTitle');
+        const catSelect = document.getElementById('customTopicCategorySelect');
+        const personaEl = document.getElementById('customTopicPersona');
+        const levelEl = document.getElementById('customTopicLevel');
+        const customGroup = document.getElementById('customCategoryInputGroup');
+
+        if (customGroup) customGroup.classList.add('hidden');
+
+        const presets = {
+          smalltalk: {
+            title: "글로벌 동료들과 모닝 커피 & 일상 스몰토크",
+            category: "networking",
+            level: "초급 ~ 중급",
+            persona: "Sarah Jenkins (Senior UX Designer at London Office)",
+            desc: "런던 지사의 시니어 디자이너 Sarah와 아침 커피 라운지에서 마주쳤습니다. 주말 근황과 최근 날씨, 가벼운 취미에 대해 편안하게 이야기를 나누며 글로벌 동료와 친밀감을 형성해보세요.",
+            drillEn: "How was your weekend? Did you get a chance to unwind?",
+            drillKo: "주말 잘 보내셨어요? 푹 쉬면서 재충전 좀 하셨나요?",
+            drillTip: "'How was your weekend?' 뒤에 'Did you get a chance to unwind/relax?'를 덧붙이면 훨씬 배려 깊고 자연스러운 스몰토크가 돼요.",
+            mission1: "1단계: 밝은 인사와 함께 주말에 무엇을 했는지 물어보며 자연스럽게 대화 시작하기",
+            mission2: "2단계: 최근 본 넷플릭스 드라마나 흥미로운 취미 활동에 대해 가볍게 이야기 나누기",
+            mission3: "3단계: 오늘 회의나 일정에 대해 긍정적으로 언급하며 화기애애하게 대화 마무리하기",
+            greeting: "Good morning! How are you doing today? Did you have a nice, relaxing weekend?"
+          },
+          hotel: {
+            title: "해외 출장 호텔 체크인 및 고층 조용한 룸 요청",
+            category: "travel",
+            level: "초급 ~ 중급",
+            persona: "David Miller (Hotel Front Desk Manager)",
+            desc: "해외 출장 중 뉴욕 호텔 프론트 데스크에서 체크인을 진행하고 있습니다. 배정받은 객실이 소음이 심할 수 있어, 고층의 조용하고 쾌적한 룸으로 변경 가능한지 정중하게 문의해야 합니다.",
+            drillEn: "Could you check if there is a quieter room available on a higher floor?",
+            drillKo: "혹시 고층에 소음이 덜한 조용한 방이 남아있는지 확인해 주실 수 있나요?",
+            drillTip: "'I want a quiet room'보다 'Could you check if there is a quieter room available...?'을 쓰면 한층 세련되고 정중하게 들려요.",
+            mission1: "1단계: 예약자 이름을 밝히고 체크인 절차 진행 요청하기",
+            mission2: "2단계: 엘리베이터 소음을 피해 고층의 조용한 객실로 변경 가능한지 정중히 문의하기",
+            mission3: "3단계: 조식 시간과 피트니스 센터 운영 시간을 확인한 후 감사 인사와 함께 룸 키 수령하기",
+            greeting: "Good evening, welcome to the Grand Hyatt! Are you checking in today? May I have your name and confirmation number, please?"
+          },
+          dinner: {
+            title: "해외 바이어와 저녁 비즈니스 식사 및 네트워킹",
+            category: "networking",
+            level: "중급 ~ 고급",
+            persona: "James Wilson (Global Procurement Director)",
+            desc: "유럽 바이어 James 총괄과 파인다이닝 레스토랑에서 저녁 식사를 함께합니다. 현지 요리와 와인을 추천하며 최근 시장 동향에 대해 부드럽게 이야기를 나누고 끈끈한 파트너십을 다져보세요.",
+            drillEn: "Have you had a chance to try any authentic local cuisine yet?",
+            drillKo: "이곳의 정통 현지 요리를 맛보실 기회가 있으셨나요?",
+            drillTip: "식사 자리에서 'Do you like the food?'보다 'Have you had a chance to try ~?'를 건네면 자연스럽게 음식과 문화 이야기로 대화가 풍성해져요.",
+            mission1: "1단계: 저녁 식사 자리에 와주신 것에 감사 인사를 전하고 웰컴 드링크와 메뉴 추천하기",
+            mission2: "2단계: 최근 아시아 시장의 비즈니스 트렌드에 대한 상대방의 인사이트 질문하기",
+            mission3: "3단계: 앞으로의 긴밀한 협력을 기대하며 멋진 건배 제의(Toast) 건네기",
+            greeting: "Good evening! Thank you so much for arranging this wonderful dinner tonight. The restaurant atmosphere is incredible!"
+          },
+          complaint: {
+            title: "외국계 클라이언트의 배송 지연 클레임 완벽 대응",
+            category: "call",
+            level: "중급 ~ 고급",
+            persona: "Emily Clark (Head of Supply Chain at Nordic Retail)",
+            desc: "선적 지연으로 분노한 유럽 공급망 총괄 Emily가 긴급 화상 콜을 요청했습니다. 고객의 답답한 마음에 깊이 공감하고, 지연 사유를 투명하게 브리핑한 뒤 긴급 항공 특송 대체안을 제시해야 합니다.",
+            drillEn: "I completely understand your frustration, and we are treating this matter with top priority.",
+            drillKo: "답답하신 심정을 충분히 이해하며, 저희 팀도 이 사안을 최우선 순위로 다루고 있습니다.",
+            drillTip: "고객 클레임에서는 변명보다 즉각적인 공감('I completely understand your frustration')을 먼저 표현해야 신뢰를 지킬 수 있어요.",
+            mission1: "1단계: 고객의 불편에 진심 어린 공감과 사과를 전하며 차분하게 대화 시작하기",
+            mission2: "2단계: 해상 운송 기상 악화로 인한 현 상황을 투명하고 침착하게 설명하기",
+            mission3: "3단계: 추가 비용 없는 긴급 항공 특송 전환 및 전담 트래킹 솔루션을 제시해 고객 안심시키기",
+            greeting: "Hi, thank you for jumping on this call. As you know, our shipment is three days behind schedule, and our distribution center is completely halted. What is going on?"
+          },
+          kickoff: {
+            title: "신규 AI 마케팅 솔루션 프로젝트 킥오프 미팅",
+            category: "meeting",
+            level: "초급 ~ 중급",
+            persona: "Marcus Vance (VP of Product Growth)",
+            desc: "신규 AI 마케팅 프로젝트의 킥오프 미팅입니다. 글로벌 제품 부사장 Marcus 및 다국적 팀원들과 주요 마일스톤, 팀별 역할 분담, Q4 런칭 목표를 조율해야 합니다.",
+            drillEn: "Our primary objective for this kickoff is to align on the core milestones and timeline.",
+            drillKo: "오늘 킥오프의 핵심 목표는 주요 마일스톤과 추진 일정에 대해 싱크를 맞추는 것입니다.",
+            drillTip: "'The goal of today is ~'보다 'Our primary objective is to align on ~'을 쓰면 훨씬 프로페셔널한 리더십이 돋보여요.",
+            mission1: "1단계: 오늘 킥오프 미팅의 핵심 목적과 프로젝트 비전 명확히 브리핑하기",
+            mission2: "2단계: 8주간의 핵심 스프린트 마일스톤 및 주요 의존성(Dependencies) 공유하기",
+            mission3: "3단계: 팀원들의 질문과 우려사항을 청취하고 성공적인 런칭을 약속하며 미팅 마무리하기",
+            greeting: "Welcome everyone! I'm thrilled to kick off this new AI initiative together. Marcus here. Could you walk us through the primary goals for today's session?"
+          }
+        };
+
+        const p = presets[presetId];
+        if (!p) return;
+
+        if (titleEl) titleEl.value = p.title;
+        if (catSelect) catSelect.value = p.category;
+        if (personaEl) personaEl.value = p.persona;
+        if (levelEl) levelEl.value = p.level;
+
+        this.fillCustomTopicPreview(p);
+      }
+
+      fillCustomTopicPreview(data) {
+        const previewContainer = document.getElementById('customTopicPreviewContainer');
+        const descEl = document.getElementById('customPreviewDesc');
+        const drillEnEl = document.getElementById('customPreviewDrillEn');
+        const drillKoEl = document.getElementById('customPreviewDrillKo');
+        const drillTipEl = document.getElementById('customPreviewDrillTip');
+        const m1El = document.getElementById('customPreviewMission1');
+        const m2El = document.getElementById('customPreviewMission2');
+        const m3El = document.getElementById('customPreviewMission3');
+        const greetingEl = document.getElementById('customPreviewGreeting');
+
+        if (descEl) descEl.value = data.desc || data.description || '';
+        if (drillEnEl) drillEnEl.value = data.drillEn || (data.drillPattern && data.drillPattern.english) || '';
+        if (drillKoEl) drillKoEl.value = data.drillKo || (data.drillPattern && data.drillPattern.korean) || '';
+        if (drillTipEl) drillTipEl.value = data.drillTip || (data.drillPattern && data.drillPattern.tip) || '';
+        
+        const missions = data.missionSteps || [data.mission1, data.mission2, data.mission3];
+        if (m1El) m1El.value = missions[0] || '1단계: 핵심 오프닝 패턴으로 대화 시작하기';
+        if (m2El) m2El.value = missions[1] || '2단계: 구체적인 상황 설명 및 질문하기';
+        if (m3El) m3El.value = missions[2] || '3단계: 긍정적인 제안 또는 일정 합의 후 마무리하기';
+
+        if (greetingEl) greetingEl.value = data.greeting || (data.persona && data.persona.initialGreeting) || "Hello! It's great to connect with you today. Shall we get started?";
+
+        if (previewContainer) {
+          previewContainer.classList.remove('hidden');
+        }
+      }
+
+      async generateCustomTopicAI() {
+        const title = document.getElementById('customTopicTitle').value.trim();
+        if (!title) {
+          alert('학습하고 싶으신 주제나 상황 제목을 먼저 입력해 주세요.');
+          document.getElementById('customTopicTitle').focus();
+          return;
+        }
+
+        const catSelect = document.getElementById('customTopicCategorySelect').value;
+        const catCustom = document.getElementById('customTopicCategoryCustom').value.trim();
+        const category = catSelect === 'custom_new' && catCustom ? catCustom : catSelect;
+        const personaInput = document.getElementById('customTopicPersona').value.trim();
+        const level = document.getElementById('customTopicLevel').value;
+
+        const btn = document.getElementById('btnGenerateTopicAI');
+        const statusEl = document.getElementById('topicAiGeneratingStatus');
+        if (btn) {
+          btn.disabled = true;
+          btn.classList.add('opacity-70');
+        }
+        if (statusEl) statusEl.classList.remove('hidden');
+
+        const hasKey = !!this.geminiKey || !!localStorage.getItem('speakbiz_gemini_key');
+        let generatedData = null;
+
+        if (hasKey) {
+          try {
+            const prompt = `You are an expert English business coach and curriculum architect.
+Create a complete 3-stage English learning scenario for this topic:
+Topic Title: "${title}"
+Category: "${category}"
+Persona / Role: "${personaInput || 'Professional Counterpart'}"
+Level: "${level}"
+
+Respond with ONLY a raw JSON object (no markdown, no backticks):
+{
+  "title": "${title}",
+  "description": "2-3 sentences in friendly Korean describing realistic context and stakes",
+  "personaName": "${personaInput ? personaInput.split('(')[0].trim() : 'Alex Morgan'}",
+  "personaRole": "${personaInput || 'Global Business Partner (글로벌 파트너)'}",
+  "greeting": "Natural 1-2 sentence English greeting from persona to initiate roleplay",
+  "drillEn": "One high-impact, reusable core sentence pattern in English",
+  "drillKo": "Accurate Korean translation",
+  "drillTip": "Helpful Korean pronunciation or business nuance tip",
+  "mission1": "1단계: ... (Korean)",
+  "mission2": "2단계: ... (Korean)",
+  "mission3": "3단계: ... (Korean)",
+  "keywords": ["keyword1 (meaning)", "keyword2 (meaning)", "keyword3 (meaning)", "keyword4 (meaning)"],
+  "keyPatterns": [
+    { "category": "오프닝", "english": "...", "korean": "..." },
+    { "category": "핵심 제안", "english": "...", "korean": "..." },
+    { "category": "공감 및 조율", "english": "...", "korean": "..." },
+    { "category": "문제 해결", "english": "...", "korean": "..." },
+    { "category": "마무리", "english": "...", "korean": "..." }
+  ],
+  "sampleResponses": [
+    "Thank you for bringing that up. Could you tell me more about your thoughts on this?",
+    "I see your point. How do you suggest we proceed from here?",
+    "That sounds like an effective approach. Let's make sure we align on the details.",
+    "I appreciate your initiative on this. When can we review the initial results?",
+    "Excellent! I look forward to our continued collaboration."
+  ]
+}`;
+
+            const res = await this.callGeminiAPI({
+              contents: [{ parts: [{ text: prompt }] }]
+            });
+
+            if (res && res.success && res.text) {
+              let clean = res.text.replace(/```json/gi, '').replace(/```/g, '').trim();
+              const parsed = JSON.parse(clean);
+              if (parsed && (parsed.drillEn || parsed.description)) {
+                generatedData = parsed;
+              }
+            }
+          } catch (e) {
+            console.warn("AI 맞춤 시나리오 생성 중 오류 발생, 스마트 생성기로 대체합니다:", e);
+          }
+        }
+
+        if (!generatedData) {
+          generatedData = this.buildSmartOfflineTopic(title, category, personaInput, level);
+        }
+
+        if (generatedData) {
+          this.fillCustomTopicPreview(generatedData);
+          this.lastGeneratedCustomData = generatedData;
+        }
+
+        if (btn) {
+          btn.disabled = false;
+          btn.classList.remove('opacity-70');
+        }
+        if (statusEl) statusEl.classList.add('hidden');
+      }
+
+      buildSmartOfflineTopic(title, category, personaInput, level) {
+        const personaName = personaInput ? personaInput.split('(')[0].trim() : 'Alex Morgan';
+        const personaRole = personaInput || 'Global Business Partner (글로벌 파트너)';
+
+        return {
+          title: title,
+          description: `'${title}' 상황에서 실전에 바로 활용할 수 있는 핵심 비즈니스 영어 회화 세션입니다. 상대방과 자연스럽게 소통하며 원하는 목표를 부드럽고 명확하게 달성해보세요.`,
+          personaName: personaName,
+          personaRole: personaRole,
+          greeting: `Hello! Thanks for taking the time to connect. Let's discuss "${title}". How would you like to start?`,
+          drillEn: `I'd like to share our thoughts on how we can collaborate effectively on this.`,
+          drillKo: `이 사안에 대해 저희가 어떻게 효과적으로 협력할 수 있을지 의견을 나누고 싶습니다.`,
+          drillTip: `'I want to talk about ~'보다 'I\'d like to share our thoughts on ~'을 쓰면 정중하면서도 세련된 인상을 줍니다.`,
+          mission1: `1단계: 정중한 인사와 함께 이번 논의의 핵심 목적 명확히 밝히기`,
+          mission2: `2단계: 상황에 대한 구체적인 의견 또는 질문을 주고받으며 대화 이어가기`,
+          mission3: `3단계: 실천 가능한 액션 플랜을 제시하고 긍정적으로 대화 마무리하기`,
+          keywords: [
+            "collaborate (협력하다)",
+            "align on (~에 대해 조율하다)",
+            "action plan (실행 계획)",
+            "follow up (후속 조치하다)"
+          ],
+          keyPatterns: [
+            { category: "오프닝 & 목적 전달", english: "I'd like to share our perspective on this matter.", korean: "이 사안에 대한 저희의 견해를 공유해 드리고자 합니다." },
+            { category: "핵심 의견 제안", english: "One possible approach would be to prioritize the key requirements first.", korean: "핵심 요구사항을 먼저 우선순위화하는 접근법이 좋습니다." },
+            { category: "상대방 의견 확인", english: "Does that align with your expectations for this phase?", korean: "이 단계에 대한 귀사의 기대치와 잘 부합하나요?" },
+            { category: "유연한 조율", english: "We are flexible and happy to adjust based on your feedback.", korean: "귀사의 피드백에 맞춰 유연하게 조정할 준비가 되어 있습니다." },
+            { category: "마무리 & 확약", english: "I will follow up with a brief summary email by tomorrow.", korean: "내일까지 간단한 요약 이메일로 후속 조치해 드리겠습니다." }
+          ],
+          sampleResponses: [
+            "That sounds like a solid starting point. Could you elaborate on that?",
+            "I see what you mean. What timeline are you thinking about?",
+            "That makes good sense. Let's definitely keep that in mind.",
+            "I agree with that direction. Thank you for clarifying!",
+            "Great! Let's touch base again after we review the next steps."
+          ]
+        };
+      }
+
+      saveAndStartCustomTopic() {
+        const title = document.getElementById('customTopicTitle').value.trim();
+        if (!title) {
+          alert('주제 제목을 입력해 주세요.');
+          document.getElementById('customTopicTitle').focus();
+          return;
+        }
+
+        const catSelect = document.getElementById('customTopicCategorySelect').value;
+        const catCustom = document.getElementById('customTopicCategoryCustom').value.trim();
+        let category = catSelect;
+        let categoryName = '기타';
+
+        const catNameMap = {
+          meeting: '회의 & 토론',
+          call: '이메일 & 전화',
+          presentation: '발표 & Q&A',
+          negotiation: '협상 & 계약',
+          interview: '영어 면접',
+          travel: '출장 & 여행',
+          networking: '네트워킹 & 친목'
+        };
+
+        if (catSelect === 'custom_new') {
+          if (!catCustom) {
+            alert('새 카테고리 이름을 입력해 주세요.');
+            document.getElementById('customTopicCategoryCustom').focus();
+            return;
+          }
+          category = 'cat_' + Date.now();
+          categoryName = catCustom;
+        } else {
+          categoryName = catNameMap[catSelect] || catSelect;
+        }
+
+        const level = document.getElementById('customTopicLevel').value;
+        const personaInput = document.getElementById('customTopicPersona').value.trim();
+        const personaName = personaInput ? personaInput.split('(')[0].trim() : 'Alex Morgan';
+        const personaRole = personaInput || 'Global Partner (글로벌 파트너)';
+
+        const desc = document.getElementById('customPreviewDesc').value.trim() || `'${title}' 실전 영어 회화 세션입니다.`;
+        const drillEn = document.getElementById('customPreviewDrillEn').value.trim() || "I'd like to share our thoughts on this.";
+        const drillKo = document.getElementById('customPreviewDrillKo').value.trim() || "이 사안에 대해 저희 생각을 나누고 싶습니다.";
+        const drillTip = document.getElementById('customPreviewDrillTip').value.trim() || "소리 내어 자신감 있게 발음해보세요.";
+        const m1 = document.getElementById('customPreviewMission1').value.trim() || "1단계: 오프닝 패턴으로 대화 시작하기";
+        const m2 = document.getElementById('customPreviewMission2').value.trim() || "2단계: 구체적인 상황 설명 및 질문하기";
+        const m3 = document.getElementById('customPreviewMission3').value.trim() || "3단계: 긍정적인 제안 후 대화 마무리하기";
+        const greeting = document.getElementById('customPreviewGreeting').value.trim() || `Hello! Great to connect with you. How can I help you regarding ${title}?`;
+
+        const lastGen = this.lastGeneratedCustomData || {};
+
+        const newScenario = {
+          id: 'custom_' + Date.now(),
+          isCustom: true,
+          category: category,
+          categoryName: categoryName,
+          level: level,
+          title: title,
+          description: desc,
+          persona: {
+            name: personaName,
+            role: personaRole,
+            avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
+            initialGreeting: greeting
+          },
+          drillPattern: {
+            english: drillEn,
+            korean: drillKo,
+            tip: drillTip
+          },
+          missionSteps: [m1, m2, m3],
+          keywords: lastGen.keywords || [
+            "collaborate (협력하다)",
+            "align (조율하다)",
+            "feedback (피드백)",
+            "milestone (마일스톤)"
+          ],
+          keyPatterns: lastGen.keyPatterns || [
+            { category: "오프닝 & 목적 전달", english: drillEn, korean: drillKo },
+            { category: "핵심 의견 제안", english: "Could you walk me through the main points?", korean: "핵심 사항에 대해 설명해 주실 수 있나요?" },
+            { category: "공감 및 조율", english: "That sounds like a sensible plan.", korean: "매우 합리적인 계획인 것 같습니다." },
+            { category: "문제 해결", english: "Let's explore an alternative solution together.", korean: "대체 방안을 함께 모색해 봅시다." },
+            { category: "마무리 & 확약", english: "I will summarize this and follow up shortly.", korean: "곧 정리해서 팔로업 드리겠습니다." }
+          ],
+          sampleDialogueResponses: {
+            fallbackAI: lastGen.sampleResponses || [
+              "That is a great perspective. How should we approach the next phase?",
+              "I completely understand your priority. Let's make sure we stay aligned.",
+              "Thank you for explaining that in detail. What are the key milestones?",
+              "Sounds like a great plan of action. I appreciate your leadership!",
+              "Fantastic meeting! I look forward to our next update."
+            ]
+          }
+        };
+
+        const success = this.saveCustomScenario(newScenario);
+        if (success) {
+          this.hideAddTopicModal();
+          alert(`🎉 '${title}' 맞춤 주제가 성공적으로 생성되었어요!\n지금 바로 1단계 패턴 드릴부터 학습을 시작해 보세요.`);
+          this.startSession(newScenario.id, 1);
+        }
+      }
+
+      renderCategoryFilterTabs() {
+        const container = document.getElementById('categoryFilterTabs');
+        if (!container) return;
+
+        const baseCategories = [
+          { id: 'all', name: '전체 시나리오' },
+          { id: 'meeting', name: '회의 & 토론' },
+          { id: 'call', name: '이메일 & 전화' },
+          { id: 'presentation', name: '발표 & Q&A' },
+          { id: 'negotiation', name: '협상 & 계약' },
+          { id: 'interview', name: '영어 면접' }
+        ];
+
+        const customScenarios = this.getCustomScenarios();
+        const customCatMap = new Map();
+        customScenarios.forEach(s => {
+          if (s.category && !baseCategories.some(b => b.id === s.category)) {
+            customCatMap.set(s.category, s.categoryName || s.category);
+          }
+        });
+
+        const allCats = [...baseCategories];
+        customCatMap.forEach((name, id) => {
+          allCats.push({ id, name });
+        });
+
+        const currentCat = this.currentFilterCat || 'all';
+
+        container.innerHTML = allCats.map(cat => {
+          const isActive = cat.id === currentCat;
+          return `
+            <button onclick="app.filterScenarios('${cat.id}', this)" class="cat-btn ${isActive ? 'active bg-blue-600 text-white shadow-md shadow-blue-500/20' : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'} px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition shrink-0 whitespace-nowrap">
+              ${cat.name}
+            </button>
+          `;
+        }).join('');
+      }
+
       renderScenarios(filter = 'all') {
         const grid = document.getElementById('scenariosGrid');
         if (!grid) return;
@@ -5466,6 +6144,7 @@
           const isDone = completed.includes(scenario.id);
           const savedHistory = histories[scenario.id];
           const hasSavedTurns = savedHistory && savedHistory.turns > 0;
+          const isCustom = scenario.id.startsWith('custom_') || scenario.isCustom;
 
           const card = document.createElement('div');
           card.className = `bg-slate-900/80 hover:bg-slate-900 border ${isDone ? 'border-emerald-500/40 shadow-emerald-500/5' : (hasSavedTurns ? 'border-indigo-500/40 shadow-indigo-500/5' : 'border-slate-800 hover:border-blue-500/50')} rounded-3xl p-6 transition-all duration-200 hover:-translate-y-1 shadow-lg flex flex-col justify-between cursor-pointer group`;
@@ -5478,10 +6157,14 @@
                   <span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
                     ${scenario.categoryName}
                   </span>
+                  ${isCustom ? '<span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-purple-500/20 to-indigo-500/20 text-purple-300 border border-purple-500/40 flex items-center gap-1"><i class="ph-bold ph-sparkle text-xs"></i> 맞춤 주제</span>' : ''}
                   ${isDone ? '<span class="px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1"><i class="ph-bold ph-check-circle"></i> 학습완료</span>' : ''}
                   ${hasSavedTurns ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1"><i class="ph-bold ph-chats"></i> ${savedHistory.turns}턴 진행중</span>` : ''}
                 </div>
-                <span class="text-xs text-slate-500 font-medium">${scenario.level}</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs text-slate-500 font-medium">${scenario.level}</span>
+                  ${isCustom ? `<button onclick="event.stopPropagation(); app.deleteCustomScenario('${scenario.id}')" class="p-1 text-slate-400 hover:text-rose-400 hover:bg-rose-950/40 rounded-lg transition" title="주제 삭제"><i class="ph-bold ph-trash text-sm"></i></button>` : ''}
+                </div>
               </div>
               <div>
                 <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-blue-400 transition">${scenario.title}</h3>
@@ -5524,13 +6207,17 @@
         });
       }
 
-      filterScenarios(cat) {
+      filterScenarios(cat, btnEl = null) {
+        this.currentFilterCat = cat;
         document.querySelectorAll('.cat-btn').forEach(btn => {
-          btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+          btn.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
           btn.classList.add('bg-slate-900', 'text-slate-300');
         });
-        event.target.classList.remove('bg-slate-900', 'text-slate-300');
-        event.target.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+        const target = btnEl || (typeof event !== 'undefined' && event && event.target ? event.target.closest('.cat-btn') : null);
+        if (target) {
+          target.classList.remove('bg-slate-900', 'text-slate-300');
+          target.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-md', 'shadow-blue-500/20');
+        }
         this.renderScenarios(cat);
       }
 
@@ -8210,7 +8897,8 @@ Do not wrap in markdown quotes if possible, output raw valid JSON.`;
 
       showHome(push = true) {
         this.stopAllRecordings();
-        this.renderScenarios();
+        this.renderCategoryFilterTabs();
+        this.renderScenarios(this.currentFilterCat || 'all');
         this.updateStreakUI();
         this.updateBookmarkBadge();
         document.getElementById('viewSession').classList.add('hidden');
