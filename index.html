@@ -1124,10 +1124,10 @@
           </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
             비즈니스 실전 대화,<br>
-            <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">AI 롤플레잉과 패턴 드릴</span>로 완성하세요.
+            <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">AI 롤플레잉과 패턴 드릴</span>로 재미있게 마스터해 봐요!
           </h1>
           <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-            실제 직장 상황에서 사용하는 비즈니스 영어 표현을 소리 내어 연습하고 AI 피드백을 받으세요.
+            실제 직장에서 바로 써먹는 생생한 영어 표현을 소리 내어 연습하고, 똑똑한 AI 피드백도 받아보세요.
           </p>
         </div>
       </div>
@@ -1236,12 +1236,12 @@
               <div class="w-48 h-1.5 bg-slate-800 rounded-full overflow-hidden">
                 <div id="drillLiveVolumeBar" class="h-full bg-gradient-to-r from-emerald-500 to-red-500 w-0 transition-all duration-75"></div>
               </div>
-              <div class="text-[11px] text-red-400 font-bold animate-pulse">🔴 음성을 녹음하고 있습니다... (다시 누르면 완료)</div>
+              <div class="text-[11px] text-red-400 font-bold animate-pulse">🔴 목소리를 열심히 듣고 있어요... (다시 누르면 완료돼요)</div>
             </div>
 
             <!-- Recognized Text -->
             <div id="drillRecognizedText" class="en-font text-slate-300 text-sm font-medium text-center">
-              아래 마이크 버튼을 누르고 위 영어 문장을 소리 내어 읽어주세요.
+              아래 마이크 버튼을 누르고 문장을 편하게 소리 내어 읽어보세요!
             </div>
 
             <!-- Score & Playback Bar (Shown after speaking) -->
@@ -1349,7 +1349,7 @@
                   <div class="flex items-center gap-1.5 font-bold text-amber-300 text-xs">
                     <i class="ph-fill ph-target text-sm"></i> 3단계 대화 가이드 (미션)
                   </div>
-                  <span class="text-[10px] text-slate-400">단계별로 발화해보세요</span>
+                  <span class="text-[10px] text-slate-400">순서대로 대화해 보세요</span>
                 </div>
                 <div id="roleplayMissionSteps" class="space-y-1.5 text-[11px] sm:text-xs">
                   <!-- Dynamically populated 3 steps -->
@@ -1414,7 +1414,7 @@
 
             <!-- Custom Korean Expression Finder -->
             <div class="flex items-center gap-1.5">
-              <input id="customKoreanExpressionInput" type="text" placeholder="하고 싶은 말을 한국어로 입력..." 
+              <input id="customKoreanExpressionInput" type="text" placeholder="영어로 바꾸고 싶은 말을 편하게 입력..." 
                 onkeydown="if(event.key==='Enter') app.findExpressionFromKorean()"
                 class="w-44 sm:w-52 bg-slate-950 border border-slate-800 rounded-lg px-2.5 py-1 text-[11px] text-white placeholder-slate-500 focus:outline-none focus:border-blue-500">
               <button id="btnFindCustomExpr" onclick="app.findExpressionFromKorean()" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-[10px] flex items-center gap-1 transition shadow-sm shrink-0">
@@ -1436,16 +1436,16 @@
               <span id="chatStreamLearnerLabel">수안이의 실시간 대화 내역</span>
             </span>
             <span class="px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-300 text-[10px] font-bold border border-blue-500/20 flex items-center gap-1">
-              <i class="ph-bold ph-floppy-disk text-xs"></i> 자동 기억됨
+              <i class="ph-bold ph-floppy-disk text-xs"></i> 자동 저장 중
             </span>
           </div>
 
           <div class="flex items-center gap-2 self-end sm:self-auto">
             <button onclick="app.undoLastRoleplayTurn()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-amber-300 text-[11px] font-semibold transition border border-slate-700/80 flex items-center gap-1">
-              <i class="ph-bold ph-arrow-u-up-left"></i> 직전 대화 취소
+              <i class="ph-bold ph-arrow-u-up-left"></i> 방금 대화 되돌리기
             </button>
             <button onclick="app.resetRoleplayConversation()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-red-400 text-[11px] font-semibold transition border border-slate-700/80 flex items-center gap-1">
-              <i class="ph-bold ph-arrows-clockwise"></i> 대화 초기화
+              <i class="ph-bold ph-arrows-clockwise"></i> 대화 다시 시작
             </button>
           </div>
         </div>
@@ -1463,7 +1463,7 @@
               </span>
             </div>
             <div id="roleplayTurnGoalHint" class="text-[11px] text-slate-400 font-medium">
-              🎯 20문장 완주를 목표로 깊이 있는 실전 비즈니스 회화를 나눠보세요!
+              🎯 20문장 완주를 목표로 AI와 함께 차근차근 이야기 나눠봐요!
             </div>
           </div>
           <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden border border-slate-800/80">
@@ -1482,7 +1482,7 @@
           <!-- Live Transcript / Status -->
           <div class="w-full text-center">
             <div id="roleplayLiveTranscript" class="en-font text-slate-300 text-xs sm:text-sm font-medium min-h-[20px] sm:min-h-[24px]">
-              마이크 버튼을 누르고 AI 파트너에게 영어로 말씀하세요.
+              마이크를 켜고 AI 파트너에게 편하게 영어로 말해봐요.
             </div>
           </div>
 
@@ -1503,7 +1503,7 @@
 
           <!-- Text Fallback Input Box -->
           <div class="w-full flex items-center gap-2 pt-2 border-t border-slate-800/80">
-            <input id="textInputFallback" type="text" placeholder="음성 대신 키보드로 직접 입력할 수도 있습니다..." 
+            <input id="textInputFallback" type="text" placeholder="음성 대신 키보드로 직접 입력하셔도 괜찮아요..." 
               onkeydown="if(event.key==='Enter') app.sendTextFallback()" 
               class="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500">
             <button onclick="app.sendTextFallback()" class="px-3.5 sm:px-4 py-2 sm:py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold transition border border-slate-700 shrink-0">
@@ -1522,8 +1522,8 @@
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold border border-emerald-500/30">
               <i class="ph-bold ph-check-circle"></i> 세션 완료 리포트
             </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">훌륭한 비즈니스 대화였습니다!</h2>
-            <p class="text-slate-300 text-xs sm:text-sm">사용하신 표현의 비즈니스 격식 수준과 원어민 대안 표현을 분석했습니다.</p>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">정말 멋진 비즈니스 대화였어요! 👏</h2>
+            <p class="text-slate-300 text-xs sm:text-sm">방금 나눈 표현들의 격식 수준과 더 자연스러운 원어민 표현들을 꼼꼼하게 정리해 드렸어요.</p>
           </div>
 
           <!-- Score Badges -->
@@ -1558,7 +1558,7 @@
             <i class="ph-bold ph-squares-four text-base"></i> 다른 시나리오 학습하기
           </button>
           <button onclick="app.retryCurrentSession()" class="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm border border-slate-700 transition flex items-center justify-center gap-1.5 active:scale-95">
-            <i class="ph-bold ph-arrows-clockwise text-base"></i> 1단계부터 다시 연습
+            <i class="ph-bold ph-arrows-clockwise text-base"></i> 1단계부터 다시 연습하기
           </button>
         </div>
 
@@ -1573,7 +1573,7 @@
           <h2 class="text-xl sm:text-2xl font-extrabold text-white flex items-center gap-2">
             <i class="ph-fill ph-bookmark-simple text-amber-400"></i> 나만의 비즈니스 표현 노트
           </h2>
-          <p class="text-xs sm:text-sm text-slate-400">별표(⭐)를 눌러 저장한 필수 비즈니스 표현들을 언제든 복습하세요.</p>
+          <p class="text-xs sm:text-sm text-slate-400">별표(⭐)를 눌러 쏙 담아둔 유용한 표현들을 언제든 편하게 복습해 보세요.</p>
         </div>
         <button onclick="app.goBack()" class="text-xs text-blue-400 hover:text-blue-300 px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold flex items-center gap-1.5 transition shadow-sm active:scale-95">
           <i class="ph-bold ph-arrow-left"></i> 이전 화면으로
@@ -1705,7 +1705,7 @@
               <i class="ph-fill ph-chart-bar-horizontal text-blue-400"></i>
               <span id="barChartTitle">날짜별 학습 시간 막대그래프 (분)</span>
             </h3>
-            <p class="text-xs text-slate-400">각 막대 위에 마우스를 올리거나 터치하면 일자별 상세 학습 시간을 확인하실 수 있습니다.</p>
+            <p class="text-xs text-slate-400">각 막대를 살짝 터치하거나 마우스를 올리면 날짜별 공부 시간을 바로 보실 수 있어요.</p>
           </div>
           
           <div class="flex items-center gap-3 text-xs text-slate-400">
@@ -1803,7 +1803,7 @@
       <div class="space-y-2.5">
         <div class="flex items-center justify-between text-xs text-slate-400 font-bold px-1">
           <span class="flex items-center gap-1.5 text-slate-300">
-            <i class="ph-bold ph-sparkle text-amber-400"></i> 영화 대본 선택 (클릭하여 즉시 플레잉):
+            <i class="ph-bold ph-sparkle text-amber-400"></i> 영화 대본 고르기 (누르면 바로 시작해요):
           </span>
           <span id="movieScriptCountBadge" class="text-[11px] text-slate-500 font-mono">4개 프리셋 준비됨</span>
         </div>
@@ -1831,7 +1831,7 @@
             <!-- Role Selector -->
             <div class="bg-slate-950/80 border border-slate-800 p-3.5 rounded-2xl space-y-2 shrink-0">
               <div class="text-[11px] font-bold text-slate-400 flex items-center gap-1">
-                <i class="ph-bold ph-mask-happy text-rose-400"></i> 내가 연기할 배역 선택 (My Role):
+                <i class="ph-bold ph-mask-happy text-rose-400"></i> 내가 맡을 배역 고르기:
               </div>
               <div id="characterSelectionButtons" class="flex items-center gap-1.5 flex-wrap">
                 <!-- Dynamically populated character selector pills -->
@@ -1858,7 +1858,7 @@
               <!-- Play / Pause Full Script -->
               <button id="btnPlayFullScript" onclick="app.toggleFullScriptPlayback()" class="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
                 <i id="iconPlayFullScript" class="ph-fill ph-play text-xs"></i>
-                <span id="textPlayFullScript">전체 대본 연속 재생</span>
+                <span id="textPlayFullScript">전체 대본 연속 듣기</span>
               </button>
 
               <!-- Korean Subtitle Toggle -->
@@ -1885,7 +1885,7 @@
             <span class="text-xs font-extrabold text-rose-400">실전 배역 롤플레잉 연기 모드</span>
             <span id="roleplayProgressBadge" class="px-2 py-0.5 rounded-md bg-rose-500/20 text-rose-300 text-[10px] font-mono font-bold">Line 1 of 8</span>
           </div>
-          <p id="movieRoleplayInstruction" class="text-xs text-slate-300 hidden sm:block">대화 순서에 맞춰 아래 해당 대사의 [Action! 🎬] 버튼을 눌러 연기하세요.</p>
+          <p id="movieRoleplayInstruction" class="text-xs text-slate-300 hidden sm:block">순서에 맞춰 아래 대사 카드의 [내 대사 녹음하기 (Action! 🎬)]를 눌러 멋지게 연기해 보세요!</p>
         </div>
 
         <!-- Script Dialogue Lines Container (KakaoTalk Messenger Stream) -->
@@ -1951,7 +1951,7 @@
             </div>
             <div>
               <h3 class="text-base sm:text-lg font-extrabold text-white">학습자 로그인 & 프로필 선택</h3>
-              <p class="text-xs text-slate-400">개인별로 진도와 실시간 대화 내역이 분리되어 자동 저장됩니다.</p>
+              <p class="text-xs text-slate-400">학습자마다 공부 진도와 대화 기록이 따로따로 안전하게 저장돼요.</p>
             </div>
           </div>
           <button onclick="app.hideUserProfilesModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
@@ -1982,7 +1982,7 @@
         <!-- User List / Switcher -->
         <div class="space-y-2.5">
           <div class="flex items-center justify-between text-xs text-slate-400 font-bold px-1">
-            <span>등록된 학습자 목록 (클릭하여 전환)</span>
+            <span>등록된 학습자 목록 (누르면 바로 전환돼요)</span>
             <span id="userCountBadge">총 3명</span>
           </div>
           <div id="userProfilesList" class="grid grid-cols-1 gap-2 max-h-52 overflow-y-auto pr-1">
@@ -2030,7 +2030,7 @@
             </div>
             <div>
               <h3 class="text-base sm:text-lg font-extrabold text-white">영화 대본 PDF 업로드 & AI 파서</h3>
-              <p class="text-xs text-slate-400">PDF 파일을 넣으면 Gemini AI가 배역과 대사, 한글 뜻을 자동 추출합니다.</p>
+              <p class="text-xs text-slate-400">PDF 파일을 넣으면 AI가 배역과 대사, 한글 번역을 쏙쏙 뽑아 정리해 드려요.</p>
             </div>
           </div>
           <button onclick="app.hideUploadScriptModal()" class="text-slate-400 hover:text-white p-1 rounded-lg">
@@ -2057,7 +2057,7 @@
             </div>
             <div>
               <div class="text-sm font-bold text-white">클릭하여 PDF 대본 파일 선택 또는 여기에 드래그</div>
-              <p class="text-xs text-slate-400 mt-1">영화, 미드, 연극 영문 대본 PDF 파일을 지원합니다.</p>
+              <p class="text-xs text-slate-400 mt-1">영화, 미드, 연극 영문 대본 PDF 파일을 편하게 올려보세요.</p>
             </div>
             <div id="selectedPdfFileInfo" class="hidden text-xs text-emerald-400 font-bold bg-emerald-950/40 border border-emerald-500/30 py-1.5 px-3 rounded-xl inline-block">
               <!-- Filename injected here -->
@@ -2096,8 +2096,8 @@
 
         <!-- Parsing Status / Progress Bar -->
         <div id="scriptParsingStatus" class="hidden text-xs text-center p-3.5 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 text-indigo-300 font-bold animate-pulse space-y-1">
-          <div><i class="ph-bold ph-circle-notch animate-spin"></i> PDF 대본 텍스트 추출 및 Gemini AI 배역·대사 구조화 분석 중...</div>
-          <div class="text-[11px] text-slate-400 font-normal">20문장 안팎의 연속된 티키타카 대화와 한글 번역, 억양 팁을 풍부하게 생성하고 있습니다. (약 3~7초 소요)</div>
+          <div><i class="ph-bold ph-circle-notch animate-spin"></i> PDF 대본 텍스트 추출 및 AI 배역·대사 분석 중이에요...</div>
+          <div class="text-[11px] text-slate-400 font-normal">20문장 안팎의 생생한 티키타카 대화와 꿀팁을 정성껏 만들고 있어요! (약 3~7초 걸려요)</div>
         </div>
 
         <!-- Modal Footer Actions -->
@@ -5334,7 +5334,7 @@
         const avatar = avatarSelect.value || '👧';
 
         if (!name) {
-          alert('학습자 이름을 입력해 주세요.');
+          alert('새로운 학습자 이름을 입력해 주세요!');
           nameInput.focus();
           return;
         }
@@ -5369,10 +5369,10 @@
         const target = this.users.find(u => u.id === userId);
         if (!target) return;
         if (this.users.length <= 1) {
-          alert('최소 1명의 학습자 프로필이 유지되어야 합니다.');
+          alert('학습자 프로필은 최소 1명 이상 있어야 해요!');
           return;
         }
-        if (!confirm(`'${target.name}' 학습자 프로필과 저장된 모든 대화 내역을 삭제하시겠습니까?`)) return;
+        if (!confirm(`'${target.name}' 프로필과 지금까지 공부한 모든 기록을 삭제할까요?`)) return;
 
         this.users = this.users.filter(u => u.id !== userId);
         localStorage.setItem('speakbiz_users', JSON.stringify(this.users));
@@ -5763,7 +5763,7 @@
         if (this.drillRepCount >= 3) {
           this.markScenarioCompleted(this.currentScenario.id);
           setTimeout(() => {
-            alert('🎉 축하합니다! 패턴 드릴 3회를 완료했습니다. 실전 AI 롤플레잉으로 넘어갑니다.');
+            alert('🎉 와, 축하해요! 패턴 드릴 3회를 멋지게 끝내셨어요. 이제 실전 AI 롤플레잉으로 함께 넘어가 볼까요?');
             this.goToStage(2);
           }, 800);
         }
@@ -5774,7 +5774,7 @@
           const audio = new Audio(this.recordedAudioUrl);
           audio.play();
         } else {
-          alert('녹음된 오디오가 없습니다.');
+          alert('녹음된 목소리가 없어요. 마이크 버튼을 누르고 편하게 말씀해 보세요!');
         }
       }
 
@@ -6053,7 +6053,7 @@
             this.currentScenario.keyPatterns = selectedPatterns;
             this.renderPatternPalette();
             if (isRateLimit) {
-              alert('⚠️ Gemini API 무료 사용 한도(Rate Limit) 상태입니다.\n\n대신 검증된 실전 고품질 비즈니스 추천 표현 라이브러리에서 최적의 표현을 즉시 불러왔습니다!');
+              alert('⚠️ Gemini API 무료 사용 한도에 도달했어요.\n\n대신 준비해 둔 엄선된 실전 비즈니스 표현들을 바로 불러와 드렸어요!');
             }
           }
         };
@@ -6122,7 +6122,7 @@ Output ONLY a JSON array with 4 objects (no markdown, no other text):
         const input = document.getElementById('customKoreanExpressionInput');
         const koreanText = input.value.trim();
         if (!koreanText) {
-          alert('추천받고 싶은 한국어 문장을 입력해 주세요.');
+          alert('영어로 바꾸고 싶은 한국어 문장을 적어주세요!');
           return;
         }
 
@@ -6133,7 +6133,7 @@ Output ONLY a JSON array with 4 objects (no markdown, no other text):
         }
 
         if (!this.geminiKey) {
-          alert('한국어 맞춤 변환에는 Gemini API 키가 필요합니다. 상단의 [🔑 API Key] 버튼으로 키를 등록해주세요.');
+          alert('한국어 맞춤 변환을 하려면 Gemini API 키가 필요해요. 상단 [🔑 API Key] 버튼으로 키를 등록해 주세요!');
           this.showApiKeyModal();
           if (btn) {
             btn.innerHTML = `<i class="ph-bold ph-lightning"></i> 변환`;
@@ -6174,13 +6174,13 @@ Output ONLY a JSON array with 3 objects (no markdown, no other text):
           }
 
           if (res && (res.isRateLimit || res.error === 'RATE_LIMIT')) {
-            alert('⚠️ Gemini API 무료 사용 한도(Rate Limit) 상태입니다. 잠시 후(약 1분 뒤) 다시 시도해 주세요.');
+            alert('⚠️ Gemini API 무료 한도에 도달했어요. 약 1분 뒤에 다시 시도해 주세요!');
           } else {
-            alert('표현 변환에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+            alert('표현을 변환하는 데 실패했어요. 잠시 후 다시 시도해 볼까요?');
           }
         } catch (e) {
           console.error('Find custom expression error:', e);
-          alert('표현 변환 중 오류가 발생했습니다.');
+          alert('표현을 변환하는 중에 오류가 발생했어요.');
         } finally {
           if (btn) {
             btn.innerHTML = `<i class="ph-bold ph-lightning"></i> 변환`;
@@ -6191,7 +6191,7 @@ Output ONLY a JSON array with 3 objects (no markdown, no other text):
 
       async generateDynamicScenario() {
         if (!this.geminiKey) {
-          alert('Gemini API 키가 필요합니다. 상단의 [🔑 API Key] 버튼을 눌러 API 키를 먼저 등록해주세요.');
+          alert('Gemini API 키가 필요해요. 상단 [🔑 API Key] 버튼을 눌러 API 키를 먼저 등록해 주세요!');
           this.showApiKeyModal();
           return;
         }
@@ -6262,13 +6262,13 @@ Output ONLY a JSON object (no markdown, no other text) with this format:
             this.addChatMessage('ai', this.currentScenario.persona.initialGreeting);
             this.playTextToSpeech(this.currentScenario.persona.initialGreeting, this.voiceRate);
 
-            alert('✨ Gemini가 새로운 구체적 실전 비즈니스 상황과 핵심 표현을 생성했습니다!');
+            alert('✨ 새로운 실전 비즈니스 상황과 맞춤 표현을 뚝딱 만들어 드렸어요!');
           } else {
-            alert('상황 생성에 실패했습니다. 다시 시도해 주세요.');
+            alert('새로운 상황을 만드는 데 실패했어요. 다시 한번 시도해 주세요!');
           }
         } catch (e) {
           console.error('Dynamic Scenario Generation Error:', e);
-          alert('상황 생성 중 오류가 발생했습니다.');
+          alert('상황을 만드는 도중에 오류가 발생했어요.');
         } finally {
           if (btn) {
             btn.innerHTML = `<i class="ph-bold ph-sparkle text-amber-300"></i> AI 새 상황 생성`;
@@ -6456,13 +6456,13 @@ Output ONLY a JSON object (no markdown, no other text) with this format:
         this.stopRoleplayRecording(false);
         document.getElementById('btnRoleplayCancel').classList.add('hidden');
         document.getElementById('roleplayLiveTranscript').innerHTML = `
-          <span class="text-slate-400 font-medium">녹음이 취소되었습니다. 다시 마이크를 눌러 말씀하세요.</span>
+          <span class="text-slate-400 font-medium">녹음이 취소되었어요. 마이크를 다시 누르고 편하게 말씀해 보세요!</span>
         `;
       }
 
       undoLastRoleplayTurn() {
         if (this.conversationHistory.length <= 1) {
-          alert('취소할 이전 대화가 없습니다.');
+          alert('되돌릴 이전 대화가 없어요.');
           return;
         }
 
@@ -6791,54 +6791,54 @@ Output ONLY a JSON object (no markdown, no other text) with this format:
 
         // 1. 구체적 어휘 및 연음(Linking), 강세(Stress) 분석
         if (lower.includes('push back')) {
-          pronunciationTip = "<b>'push back'</b> 발음 시 [푸쉬 백]으로 분절하지 않고 [푸쉬백]으로 부드럽게 연음(Linking)하며, 'back'의 [k] 받침을 깔끔하게 끊어 발음하세요.";
-          intonationTip = "의문문/요청문이므로 문장 끝('week?')을 부드럽게 살짝 올려주는 완곡한 상승조(Polite Rising Tone)로 말하면 상대방에게 훨씬 공손하게 전달됩니다.";
+          pronunciationTip = "<b>'push back'</b> 발음 시 [푸쉬 백]으로 끊지 않고 [푸쉬백]으로 부드럽게 연음(Linking)하며, 'back'의 [k] 받침을 깔끔하게 발음해 보세요.";
+          intonationTip = "의문문/요청문이므로 문장 끝('week?')을 부드럽게 살짝 올려주는 완곡한 상승조(Polite Rising Tone)로 말하면 상대방에게 훨씬 공손하게 전달돼요.";
           similarExpressions.push(
             { tag: "정중한 격식체", english: "Would you mind if we rescheduled our discussion for later this week?", korean: "저희 논의 일정을 이번 주 후반으로 재조율해도 괜찮으실까요?" },
             { tag: "간결한 실무 구어", english: "Can we move our meeting to Thursday instead?", korean: "대신 저희 미팅을 목요일로 옮길 수 있을까요?" }
           );
         } else if (lower.includes('update') || lower.includes('status')) {
-          pronunciationTip = "<b>'update'</b>는 동사로 쓰일 때 뒤 음절 [up-DATE]에 강세를 주며, 'project'의 [pr] 발음 시 입술을 모았다가 힘차게 굴려주세요.";
-          intonationTip = "보고 시작 시 'I'd like to'에서 음을 살짝 올리고, 'project status'에서 안정감 있게 하강조(Confident Falling Pitch)로 마무리하세요.";
+          pronunciationTip = "<b>'update'</b>는 동사로 쓰일 때 뒤 음절 [up-DATE]에 힘을 주고, 'project'의 [pr] 발음 시 입술을 모았다가 가볍게 굴려보세요.";
+          intonationTip = "보고 시작 시 'I'd like to'에서 음을 살짝 올리고, 'project status'에서 안정감 있게 하강조(Confident Falling Pitch)로 마무리하면 자연스러워요.";
           similarExpressions.push(
-            { tag: "임원 브리핑용", english: "Let me walk you through the key progress on our roadmap.", korean: "로드맵 상의 핵심 진척 현황을 설명해 드리겠습니다." },
-            { tag: "팀 스탠드업용", english: "Here's a quick pulse check on where we stand right now.", korean: "현재 저희가 어디까지 와 있는지 간단히 현황을 공유합니다." }
+            { tag: "임원 브리핑용", english: "Let me walk you through the key progress on our roadmap.", korean: "로드맵 상의 핵심 진척 현황을 설명해 드릴게요." },
+            { tag: "팀 스탠드업용", english: "Here's a quick pulse check on where we stand right now.", korean: "현재 저희가 어디까지 와 있는지 간단히 현황을 나눠볼게요." }
           );
         } else if (lower.includes('bottleneck') || lower.includes('blocker') || lower.includes('latency')) {
-          pronunciationTip = "<b>'bottleneck'</b>의 첫 음절 [바-틀]에서 영국식 [t] 또는 미국식 플랩(Flap [d]) 사운드를 선명하게 살리고, 'blocker'의 [b-l] 자음군을 빠르게 연결하세요.";
-          intonationTip = "문제 상황을 전달할 때는 당황하지 않고 차분하고 평온한 플랫 톤(Calm & Controlled Tone)을 유지하여 신뢰감을 주는 것이 좋습니다.";
+          pronunciationTip = "<b>'bottleneck'</b>의 첫 음절 [바-틀]에서 영국식 [t] 또는 미국식 플랩(Flap [d]) 사운드를 살리고, 'blocker'의 [b-l] 자음군을 빠르게 연결해 보세요.";
+          intonationTip = "문제 상황을 전달할 때는 당황하지 않고 차분하고 평온한 플랫 톤(Calm & Controlled Tone)을 유지하면 상대방에게 더 큰 신뢰감을 줄 수 있어요.";
           similarExpressions.push(
-            { tag: "원인 분석형", english: "The third-party API latency is our primary impediment right now.", korean: "서드파티 API 지연이 현재 저희의 가장 큰 장애 요인입니다." },
-            { tag: "완곡한 보고", english: "We hit a slight snag with the gateway, but we have it under control.", korean: "게이트웨이 쪽에 작은 문제가 생겼지만 통제 가능한 범위 내에 있습니다." }
+            { tag: "원인 분석형", english: "The third-party API latency is our primary impediment right now.", korean: "서드파티 API 지연이 현재 저희의 가장 큰 장애 요인이에요." },
+            { tag: "완곡한 보고", english: "We hit a slight snag with the gateway, but we have it under control.", korean: "게이트웨이 쪽에 작은 문제가 생겼지만 잘 해결할 수 있어요." }
           );
         } else if (lower.includes('workaround') || lower.includes('qa') || lower.includes('schedule')) {
-          pronunciationTip = "<b>'workaround'</b>는 [work-uh-round]로 하나의 단어처럼 연음하며 강세를 첫 음절 [WORK]에 두세요. 'QA'는 [큐-에이] 두 알파벳을 명확히 분리합니다.";
-          intonationTip = "해결책을 제시할 때는 'To keep us on schedule'을 또박또박 강조하며 문제 해결 능력(Proactiveness)을 돋보이게 발화하세요.";
+          pronunciationTip = "<b>'workaround'</b>는 [work-uh-round]로 하나의 단어처럼 연음하며 첫 음절 [WORK]에 강세를 두세요. 'QA'는 [큐-에이] 두 알파벳을 또박또박 발음해요.";
+          intonationTip = "해결책을 제시할 때는 'To keep us on schedule'을 또박또박 강조하면 적극적인 문제 해결 능력이 돋보여요.";
           similarExpressions.push(
-            { tag: "선제적 대응", english: "We implemented a fallback solution to prevent further schedule slippage.", korean: "추가적인 일정 지연을 막기 위해 비상 대체 방안을 적용했습니다." },
-            { tag: "실행 계획 공유", english: "Our team is putting in extra weekend testing to ensure on-time delivery.", korean: "정시 납품을 위해 주말 추가 테스트를 편성하여 대응 중입니다." }
+            { tag: "선제적 대응", english: "We implemented a fallback solution to prevent further schedule slippage.", korean: "추가적인 일정 지연을 막기 위해 비상 대체 방안을 적용했어요." },
+            { tag: "실행 계획 공유", english: "Our team is putting in extra weekend testing to ensure on-time delivery.", korean: "정시 납품을 위해 주말 추가 테스트를 편성하여 대응하고 있어요." }
           );
         } else if (lower.includes('conversion') || lower.includes('cac') || lower.includes('chart')) {
-          pronunciationTip = "<b>'conversion'</b>의 [v] 발음 시 윗니로 아랫입술을 가볍게 물어 유성 마찰음을 내고, 'CAC'는 [캑] 또는 [씨-에이-씨]로 자연스럽게 구사하세요.";
-          intonationTip = "데이터 수치를 강조할 때는 'steadily increasing'의 앞부분을 살짝 높여 강조하고, 문장 끝을 확신에 찬 어조로 단호하게 맺으세요.";
+          pronunciationTip = "<b>'conversion'</b>의 [v] 발음 시 윗니로 아랫입술을 가볍게 물어 부드러운 소리를 내고, 'CAC'는 [캑] 또는 [씨-에이-씨]로 자연스럽게 읽어보세요.";
+          intonationTip = "데이터 수치를 강조할 때는 'steadily increasing'의 앞부분을 살짝 높여 강조하고, 문장 끝을 자신감 있는 어조로 맺어보세요.";
           similarExpressions.push(
-            { tag: "데이터 강조", english: "As highlighted in this graph, our conversion rate continues to trend upward.", korean: "이 그래프에 강조된 바와 같이, 전환율이 지속적인 상승세를 이어가고 있습니다." },
-            { tag: "핵심 지표 방어", english: "The short-term CAC spike was directly balanced out by higher LTV.", korean: "단기적인 CAC 급증은 더 높아진 LTV에 의해 즉시 상쇄되었습니다." }
+            { tag: "데이터 강조", english: "As highlighted in this graph, our conversion rate continues to trend upward.", korean: "이 그래프에서 보듯이, 전환율이 꾸준한 상승세를 이어가고 있어요." },
+            { tag: "핵심 지표 방어", english: "The short-term CAC spike was directly balanced out by higher LTV.", korean: "단기적인 CAC 상승은 더 높아진 고객 생애 가치(LTV)로 충분히 상쇄되었어요." }
           );
         } else if (lower.includes('discount') || lower.includes('concession') || lower.includes('contract')) {
-          pronunciationTip = "<b>'concession'</b>의 강세는 두 번째 음절 [con-CES-sion]에 두며, 'discount'의 첫 음절 [DIS-count] 강세를 또박또박 짚어주세요.";
-          intonationTip = "조건부 제안(If you can...)에서는 'If' 절의 끝을 살짝 올리고, 주절('we are ready to...')에서 명확히 내리는 정중한 협상 억양을 구사하세요.";
+          pronunciationTip = "<b>'concession'</b>은 두 번째 음절 [con-CES-sion]에, 'discount'는 첫 음절 [DIS-count]에 힘을 주어 또박또박 발음해 보세요.";
+          intonationTip = "조건부 제안(If you can...)에서는 'If' 절의 끝을 살짝 올리고, 주절('we are ready to...')에서 명확히 내리는 정중한 협상 억양을 구사해 보세요.";
           similarExpressions.push(
-            { tag: "협상 절충안", english: "If you can offer a 12% volume rate, we are ready to sign the multi-year deal today.", korean: "12% 볼륨 할인을 적용해 주신다면 오늘 다년 계약에 서명할 준비가 되어 있습니다." },
-            { tag: "상호 혜택 제안", english: "In exchange for a longer commitment, we would like to request a 15% discount.", korean: "장기 계약 약정을 맺는 조건으로 15% 할인을 요청드리고자 합니다." }
+            { tag: "협상 절충안", english: "If you can offer a 12% volume rate, we are ready to sign the multi-year deal today.", korean: "12% 볼륨 할인을 적용해 주신다면 오늘 다년 계약에 서명할 준비가 되어 있어요." },
+            { tag: "상호 혜택 제안", english: "In exchange for a longer commitment, we would like to request a 15% discount.", korean: "장기 계약을 맺는 조건으로 15% 할인을 제안드리고 싶어요." }
           );
         } else {
           // 일반 비즈니스 발화 기본 팁
-          pronunciationTip = "자음군(Consonant Clusters)과 문장 내 기능어(in, to, the, for)를 가볍게 축약하고, 내용어(명사/동사/형용사)의 모음을 크고 선명하게 발음하세요.";
-          intonationTip = "비즈니스 회화에서는 문장의 핵심 키워드에 멜로디 피치 강세(Pitch Accent)를 주고, 문장 끝을 안정적인 하강조(Falling Cadence)로 맺는 것이 가장 프로페셔널합니다.";
+          pronunciationTip = "자음군(Consonant Clusters)과 문장 내 기능어(in, to, the, for)를 가볍게 축약하고, 내용어(명사/동사/형용사)의 모음을 크고 선명하게 소리 내어 보세요.";
+          intonationTip = "문장의 핵심 키워드에 부드럽게 멜로디 피치 강세(Pitch Accent)를 주고, 문장 끝을 안정적인 하강조(Falling Cadence)로 맺으면 훨씬 자연스러워요.";
           similarExpressions.push(
-            { tag: "정중한 비즈니스체", english: "I would appreciate it if you could consider our current proposal.", korean: "저희 현재 제안을 긍정적으로 검토해 주시면 감사하겠습니다." },
-            { tag: "자연스러운 실무체", english: "Let's make sure we are fully aligned on the next steps moving forward.", korean: "향후 다음 단계에 대해 서로 완벽히 일치하도록 조율해 봅시다." }
+            { tag: "정중한 비즈니스체", english: "I would appreciate it if you could consider our current proposal.", korean: "저희 현재 제안을 긍정적으로 검토해 주시면 정말 감사하겠습니다." },
+            { tag: "자연스러운 실무체", english: "Let's make sure we are fully aligned on the next steps moving forward.", korean: "앞으로의 다음 단계를 서로 완벽히 맞춰보면 좋겠어요." }
           );
         }
 
@@ -7090,8 +7090,8 @@ You MUST respond strictly in valid JSON format with the following keys:
 {
   "aiReply": "Your realistic, professional conversational response (1-2 sentences) directly addressing what the user said, followed by a sharp question or statement.",
   "userCoaching": {
-    "pronunciationTip": "Specific word-level pronunciation & linking sound tip for what the user just said (in friendly Korean)",
-    "intonationTip": "Sentence-level intonation curve, pitch & stress guidance for what the user just said (in Korean)",
+    "pronunciationTip": "Specific word-level pronunciation & linking sound tip for what the user just said (in friendly, warm, polite, encouraging Korean tone like '~해보세요', '~하면 훨씬 자연스러워요')",
+    "intonationTip": "Sentence-level intonation curve, pitch & stress guidance for what the user just said (in friendly, polite, encouraging Korean)",
     "similarExpressions": [
       {
         "tag": "격식체 / 세련된 표현",
@@ -7106,7 +7106,7 @@ You MUST respond strictly in valid JSON format with the following keys:
     ]
   },
   "suggestedUserReply": "A highly natural, professional native English answer for the USER to say NEXT in this 20-turn dialogue.",
-  "koreanMeaning": "Natural Korean translation of suggestedUserReply",
+  "koreanMeaning": "Natural, warm Korean translation of suggestedUserReply",
   "keyVocabulary": ["key phrase 1 (한국어 뜻)", "key phrase 2 (한국어 뜻)"],
   "category": "Brief Korean category tag"
 }
@@ -7193,23 +7193,23 @@ Do not wrap in markdown quotes if possible, output raw valid JSON.`;
 
         if (goalHint) {
           if (turns === 0) {
-            goalHint.innerHTML = `🎯 20문장 완주를 목표로 깊이 있는 실전 비즈니스 회화를 나눠보세요!`;
+            goalHint.innerHTML = `🎯 20문장 완주를 목표로 AI와 함께 차근차근 이야기 나눠봐요!`;
           } else if (turns < 10) {
-            goalHint.innerHTML = `🔥 순조로운 진행입니다! (${turns}/20문장) 계속 질문에 답변하며 심층 대화를 이어가세요.`;
+            goalHint.innerHTML = `🔥 너무 잘하고 계세요! (${turns}/20문장) 이 기세로 다음 대화도 멋지게 이어가 봐요.`;
           } else if (turns < 20) {
-            goalHint.innerHTML = `💪 절반 이상 완수했습니다! (${turns}/20문장) 심층적인 논의를 이어가 보세요.`;
+            goalHint.innerHTML = `💪 벌써 절반 넘게 왔어요! (${turns}/20문장) 끝까지 조금만 더 힘내봐요!`;
           } else {
-            goalHint.innerHTML = `🎉 <span class="text-emerald-400 font-bold">20문장 목표 완수!</span> 계속 대화를 이어가거나 '대화 완료 & 리포트'를 확인하세요.`;
+            goalHint.innerHTML = `🎉 <span class="text-emerald-400 font-bold">20문장 목표 달성!</span> 계속 이야기하셔도 좋고, [완료 & 리포트]를 눌러 결과를 확인해 보세요.`;
           }
         }
 
         if (liveTranscript) {
           if (turns >= targetTurns) {
             liveTranscript.innerHTML = `
-              <span class="text-emerald-400 font-bold">🎉 20문장 완벽 마스터! 충분한 실전 연습이 완료되었습니다!</span> 언제든 하단의 '대화 완료 & 리포트' 버튼을 눌러 종합 피드백을 확인하세요.
+              <span class="text-emerald-400 font-bold">🎉 20문장 완벽 마스터! 정말 멋지게 해내셨어요!</span> 언제든 상단의 [완료 & 리포트] 버튼을 눌러 분석 결과를 확인해 보세요.
             `;
           } else {
-            liveTranscript.innerHTML = `마이크 버튼을 누르고 AI 파트너에게 영어로 말씀하세요. <span class="text-indigo-400 font-semibold">(현재 ${turns}/20문장 진행 중)</span>`;
+            liveTranscript.innerHTML = `마이크를 켜고 AI 파트너에게 영어로 말해봐요. <span class="text-indigo-400 font-semibold">(현재 ${turns}/20문장 진행 중)</span>`;
           }
         }
       }
@@ -7396,7 +7396,7 @@ Do not wrap in markdown quotes if possible, output raw valid JSON.`;
           this.saveUserBookmarks();
           this.updateBookmarkBadge();
           this.renderPatternPalette();
-          alert('🗑️ 표현 노트에서 제거되었습니다.');
+          alert('🗑️ 표현 노트에서 쏙 뺐어요!');
         } else {
           this.bookmarks.unshift({ 
             english: cleanEng, 
@@ -7407,7 +7407,7 @@ Do not wrap in markdown quotes if possible, output raw valid JSON.`;
           this.saveUserBookmarks();
           this.updateBookmarkBadge();
           this.renderPatternPalette();
-          alert(`⭐ ${this.currentUser.name} 님의 표현 노트에 성공적으로 저장되었습니다!\n상단 [🔖 표현 노트] 메뉴에서 언제든지 모아보고 복습하실 수 있습니다.`);
+          alert(`⭐ ${this.currentUser.name} 님의 표현 노트에 쏙 담아두었어요!\n상단 [🔖 표현 노트]에서 언제든 편하게 꺼내보세요.`);
         }
       }
 
@@ -8326,7 +8326,7 @@ Do not wrap in markdown quotes if possible, output raw valid JSON.`;
               btnSave.innerHTML = `인증 및 저장`;
               btnSave.disabled = false;
             }
-            alert('🎉 Gemini API 키가 성공적으로 인증 및 저장되었습니다!\n이제 실시간 AI 자율 롤플레잉과 음성 인식, 맞춤 표현 추천이 모두 완벽하게 작동합니다.');
+            alert('🎉 Gemini API 키가 잘 등록되었어요!\n이제 실시간 AI 자율 롤플레잉과 음성 피드백을 자유롭게 즐겨보세요.');
           }, 800);
         } else {
           if (btnSave) {
@@ -9223,8 +9223,8 @@ Strict Rules:
           const icon = document.getElementById('iconPlayFullScript');
           const text = document.getElementById('textPlayFullScript');
           if (icon) icon.className = "ph-fill ph-play text-xs";
-          if (text) text.textContent = "전체 대본 연속 재생";
-          alert('🎬 전체 영화 대본 연속 재생이 완료되었습니다!');
+          if (text) text.textContent = "전체 대본 연속 듣기";
+          alert('🎬 전체 영화 대본 연속 듣기를 모두 마쳤어요!');
           return;
         }
 
@@ -9253,15 +9253,15 @@ Strict Rules:
         const instr = document.getElementById('movieRoleplayInstruction');
         if (instr) {
           instr.innerHTML = isUserTurn
-            ? `<span class="text-rose-400 font-bold">[🎬 YOUR TURN - ${activeLine.character}]</span> 아래 해당 대사 카드의 <strong class="text-white underline">내 대사 녹음하기 (Action!)</strong>를 눌러 연기하세요!`
-            : `<span class="text-blue-400 font-bold">[AI 상대역 - ${activeLine.character}]</span> 상대방의 대사가 재생 중입니다. 귀 기울여 들어보세요.`;
+            ? `<span class="text-rose-400 font-bold">[🎬 내 차례 - ${activeLine.character}]</span> 아래 해당 대사 카드의 <strong class="text-white underline">내 대사 녹음하기 (Action!)</strong>를 누르고 멋지게 연기해 보세요!`
+            : `<span class="text-blue-400 font-bold">[AI 상대역 - ${activeLine.character}]</span> 상대방 대사가 나오고 있어요. 귀 기울여 들어보세요!`;
         }
       }
 
       checkAndPlayNextRoleplayTurn() {
         if (!this.currentMovieScript || this.scriptStudyMode !== 'roleplay') return;
         if (this.movieRoleplayLineIndex >= this.currentMovieScript.lines.length) {
-          alert('🎉 축하합니다! 영화 장면 롤플레잉 연기를 모두 완료하셨습니다!');
+          alert('🎉 와, 정말 멋져요! 이번 영화 장면 롤플레잉을 끝까지 완주하셨어요!');
           this.movieRoleplayLineIndex = 0;
         }
 
@@ -9320,7 +9320,7 @@ Strict Rules:
         const micLabel = document.getElementById(`labelInlineRecord_${lineId}`);
         const recBtn = document.getElementById(`btnInlineRecord_${lineId}`);
         if (micIcon) micIcon.className = "ph-fill ph-stop text-sm";
-        if (micLabel) micLabel.textContent = "🔴 녹음 중... (완료하려면 클릭)";
+        if (micLabel) micLabel.textContent = "🔴 목소리를 듣고 있어요... (다시 누르면 완료돼요)";
         if (recBtn) recBtn.className = "px-4 py-2.5 rounded-xl bg-gradient-to-r from-red-600 to-rose-700 text-white font-extrabold text-xs flex items-center gap-2 shadow-lg shadow-red-500/40 animate-pulse active:scale-95 transition";
 
         try {
@@ -9371,8 +9371,8 @@ Strict Rules:
         if (fbBox) {
           fbBox.classList.remove('hidden');
           fbBox.innerHTML = `
-            <div class="flex items-center gap-2 text-indigo-400 dark:text-indigo-300 font-semibold animate-pulse">
-              <i class="ph-bold ph-circle-notch animate-spin"></i> 대사 발음 및 일치율 분석 중...
+            <div class="flex items-center gap-2 text-indigo-300 font-semibold animate-pulse">
+              <i class="ph-bold ph-circle-notch animate-spin"></i> 대사 발음과 일치율을 꼼꼼히 분석하고 있어요...
             </div>
           `;
         }
@@ -9401,7 +9401,7 @@ Strict Rules:
             <div class="flex items-center justify-between">
               <span class="font-extrabold ${isPass ? 'text-emerald-400' : 'text-amber-400'} flex items-center gap-1.5 text-xs sm:text-sm">
                 <i class="ph-bold ${isPass ? 'ph-check-circle' : 'ph-warning-circle'}"></i> 
-                대사 암기 일치율: ${accuracy}% ${isPass ? '🎉 Excellent Acting!' : '💡 조금 더 연습해 보세요'}
+                대사 암기 일치율: ${accuracy}% ${isPass ? '🎉 완벽한 연기예요! 멋져요!' : '💡 조금만 더 연습하면 금방 마스터할 수 있어요!'}
               </span>
               <span class="text-[10px] text-slate-400 font-mono">My Turn Feedback</span>
             </div>
@@ -9409,7 +9409,7 @@ Strict Rules:
               <strong class="text-slate-400">인식된 발화:</strong> <span class="text-indigo-300 font-bold">"${recognizedText}"</span>
             </div>
             <div class="text-slate-300 text-[11px]">
-              <strong class="text-amber-400">💡 감정 & 억양 팁:</strong> ${activeLine.intonationTip || '상대방과의 호흡에 맞춰 자연스럽게 연기해 보세요.'}
+              <strong class="text-amber-400">💡 감정 & 억양 팁:</strong> ${activeLine.intonationTip || '상대방과의 호흡에 맞춰 편안하고 자연스럽게 연기해 보세요.'}
             </div>
           `;
         }
@@ -9479,7 +9479,7 @@ Strict Rules:
           const arrayBuffer = await file.arrayBuffer();
           const pLib = window['pdfjs-dist/build/pdf'] || window.pdfjsLib;
           if (!pLib) {
-            alert('PDF 파서 라이브러리가 로드되는 중입니다. 잠시 후 다시 시도해 주세요.');
+            alert('PDF 분석 도구를 준비하고 있어요. 잠시 후 다시 눌러주세요!');
             return;
           }
           const loadingTask = pLib.getDocument({ data: arrayBuffer });
@@ -9499,7 +9499,7 @@ Strict Rules:
           }
         } catch(err) {
           console.error("PDF Parsing Error:", err);
-          alert('PDF 파일을 읽는 중 오류가 발생했습니다: ' + err.message);
+          alert('PDF 파일을 읽는 중에 문제가 생겼어요: ' + err.message);
         }
       }
 
@@ -9513,7 +9513,7 @@ Strict Rules:
         }
 
         if (!rawText) {
-          alert('PDF 파일을 업로드하거나 영문 대본 텍스트를 입력해 주세요.');
+          alert('대본 PDF 파일을 올리시거나 영문 대본을 직접 적어주세요!');
           return;
         }
 
@@ -9591,10 +9591,10 @@ ${rawText.slice(0, 15000)}
           this.hideUploadScriptModal();
           this.selectMovieScript(parsedScript.id);
           this.showMovieStudio();
-          alert(`🎬 '${parsedScript.title}' 대본이 총 ${parsedScript.lines.length}개 대사로 성공적으로 생성되어 스튜디오에 로드되었습니다!`);
+          alert(`🎬 '${parsedScript.title}' 대본이 총 ${parsedScript.lines.length}개 대사로 깔끔하게 정리되어 스튜디오에 쏙 들어왔어요!`);
         } catch(e) {
           console.error("processAndSaveScript error:", e);
-          alert('대본 분석 중 오류가 발생했습니다: ' + e.message);
+          alert('대본을 분석하는 중에 오류가 생겼어요: ' + e.message);
         } finally {
           if (statusEl) statusEl.classList.add('hidden');
           if (startBtn) startBtn.disabled = false;
@@ -9718,9 +9718,9 @@ ${rawText.slice(0, 15000)}
         } else {
           const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
           if (isIOS) {
-            alert('📱 홈 화면에 앱 설치 방법 (iOS):\n\nSafari 브라우저 하단의 [공유] 버튼(□↑)을 누른 후\n[홈 화면에 추가]를 선택하면 독립된 앱으로 설치됩니다!');
+            alert('📱 홈 화면에 앱 추가하는 방법 (iOS):\n\nSafari 브라우저 아래쪽 [공유] 버튼(□↑)을 누른 다음,\n[홈 화면에 추가]를 누르면 스마트폰 앱처럼 편하게 쓰실 수 있어요!');
           } else {
-            alert('📱 앱 설치 안내:\n\n브라우저 주소창 우측의 [앱 설치] 아이콘 또는 브라우저 메뉴(⋮)에서 [앱 설치]나 [홈 화면에 추가]를 클릭하시면 앱으로 설치됩니다!');
+            alert('📱 앱 추가 안내:\n\n브라우저 주소창 오른쪽의 [앱 설치] 아이콘이나 메뉴(⋮)에서 [홈 화면에 추가]를 눌러주시면 앱으로 편하게 이용하실 수 있어요!');
           }
         }
       }
@@ -9760,7 +9760,7 @@ ${rawText.slice(0, 15000)}
       <h3 class="text-lg font-bold text-white flex items-center gap-2">
         <i class="ph-bold ph-key text-blue-400"></i> Gemini API Key 설정
       </h3>
-      <p class="text-xs text-slate-400 leading-relaxed">Google AI Studio에서 발급받은 API 키를 입력하세요. <span class="text-amber-300 font-semibold">[인증 및 저장]</span>을 누르면 연결 테스트와 저장이 완료됩니다.</p>
+      <p class="text-xs text-slate-400 leading-relaxed">Google AI Studio에서 발급받은 API 키를 입력해 주세요. <span class="text-amber-300 font-semibold">[인증 및 저장]</span>을 누르면 연결 테스트와 저장이 안전하게 완료돼요.</p>
       <div class="flex items-center justify-between text-[11px] text-slate-400 bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800">
         <span>🔑 무료 API 키가 없으신가요?</span>
         <a href="https://aistudio.google.com/app/apikey" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-bold flex items-center gap-0.5">
