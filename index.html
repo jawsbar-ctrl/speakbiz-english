@@ -339,8 +339,20 @@
     body.light-mode button[class*="from-pink-"],
     body.light-mode button[class*="from-pink-"] *,
     body.light-mode button[class*="from-purple-"],
-    body.light-mode button[class*="from-purple-"] * {
+    body.light-mode button[class*="from-purple-"] *,
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box,
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box * {
       color: #ffffff !important;
+    }
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box .text-amber-300,
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box i.text-amber-300,
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box .\!text-amber-300 {
+      color: #fde047 !important;
+    }
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box .text-amber-200,
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box i.text-amber-200,
+    body.light-mode #movieScriptPresetsGrid .movie-preset-icon-box .\!text-amber-200 {
+      color: #fef08a !important;
     }
     body.light-mode #btnGenDynamicScenario i {
       color: #fde047 !important;
@@ -2897,7 +2909,9 @@
         location: '런웨이 매거진 본사 회의실',
         description: "미란다 편집장의 전설적인 '세룰리안 블루 스웨터' 독설과 앤디의 첫 업무 인터뷰 명장면 대본입니다.",
         cover: '👗',
-        color: 'from-blue-600 to-indigo-900',
+        coverIcon: 'ph-dress',
+        coverIconColor: '!text-white',
+        color: 'from-blue-600 via-indigo-600 to-violet-600',
         characters: [
           { name: 'Miranda', role: '미란다 프리슬리 (악명 높은 패션 편집장)', avatar: '👩‍💼', voiceGender: 'female' },
           { name: 'Andy', role: '앤디 삭스 (신입 비서)', avatar: '👧', voiceGender: 'female' }
@@ -2984,7 +2998,9 @@
         location: 'About the Fit 본사 대표실',
         description: "젊은 스타트업 여성 CEO 줄스와 70세 시니어 인턴 벤의 따뜻하고 지혜로운 첫 1:1 면담 대본입니다.",
         cover: '💼',
-        color: 'from-emerald-600 to-teal-900',
+        coverIcon: 'ph-briefcase',
+        coverIconColor: '!text-amber-300',
+        color: 'from-emerald-600 via-teal-600 to-cyan-600',
         characters: [
           { name: 'Jules', role: '줄스 오스틴 (스타트업 대표)', avatar: '👩‍💼', voiceGender: 'female' },
           { name: 'Ben', role: '벤 휘태커 (70세 시니어 인턴)', avatar: '👨‍💼', voiceGender: 'male' }
@@ -3053,7 +3069,9 @@
         location: '그리피스 천문대',
         description: "꿈과 사랑을 노래하는 미아와 세바스찬의 천문대 재즈와 꿈에 대한 명대사 대본입니다.",
         cover: '🌌',
-        color: 'from-purple-600 to-indigo-900',
+        coverIcon: 'ph-music-notes',
+        coverIconColor: '!text-amber-300',
+        color: 'from-purple-600 via-fuchsia-600 to-indigo-600',
         characters: [
           { name: 'Mia', role: '미아 (배우 지망생)', avatar: '👧', voiceGender: 'female' },
           { name: 'Sebastian', role: '세바스찬 (재즈 피아니스트)', avatar: '🧑‍🎤', voiceGender: 'male' }
@@ -3122,7 +3140,9 @@
         location: '콘월 해변가 집 주방',
         description: "인생의 위대한 비밀인 '평범한 하루를 두 번 살아보기'를 알려주는 아버지와 아들의 감동 명대사 대본입니다.",
         cover: '⏳',
-        color: 'from-amber-600 to-orange-900',
+        coverIcon: 'ph-hourglass-high',
+        coverIconColor: '!text-amber-100',
+        color: 'from-amber-500 via-orange-600 to-rose-600',
         characters: [
           { name: 'Dad', role: '아버지 (시간 여행자)', avatar: '👨‍🦳', voiceGender: 'male' },
           { name: 'Tim', role: '팀 (아들)', avatar: '👦', voiceGender: 'male' }
@@ -9404,10 +9424,20 @@ Strict Rules:
 
         grid.innerHTML = this.movieScripts.map(script => {
           const isSelected = this.currentMovieScript && this.currentMovieScript.id === script.id;
+
+          let iconHtml = '';
+          if (script.coverIcon) {
+            iconHtml = `<i class="ph-fill ${script.coverIcon} text-2xl ${script.coverIconColor || '!text-white'} drop-shadow-md"></i>`;
+          } else if (script.cover && script.cover.startsWith('ph-')) {
+            iconHtml = `<i class="ph-fill ${script.cover} text-2xl !text-white drop-shadow-md"></i>`;
+          } else {
+            iconHtml = `<span class="text-2xl drop-shadow-sm select-none">${script.cover || '🎬'}</span>`;
+          }
+
           return `
-            <div onclick="app.selectMovieScript('${script.id}')" class="p-3.5 rounded-2xl border ${isSelected ? 'border-rose-500/80 bg-rose-950/30 shadow-md shadow-rose-500/10' : 'border-slate-800 bg-slate-900/80 hover:border-slate-700 hover:bg-slate-900'} cursor-pointer transition flex items-center gap-3 group">
-              <div class="w-11 h-11 rounded-xl bg-gradient-to-br ${script.color || 'from-rose-600 to-indigo-800'} flex items-center justify-center text-2xl shadow-sm shrink-0 group-hover:scale-105 transition-transform">
-                ${script.cover || '🎬'}
+            <div onclick="app.selectMovieScript('${script.id}')" class="p-3.5 rounded-2xl border ${isSelected ? 'border-rose-500/80 bg-rose-950/30 shadow-md shadow-rose-500/10 ring-1 ring-rose-500/30' : 'border-slate-800 bg-slate-900/80 hover:border-slate-700 hover:bg-slate-900'} cursor-pointer transition flex items-center gap-3 group">
+              <div class="movie-preset-icon-box w-12 h-12 rounded-2xl bg-gradient-to-br ${script.color || 'from-rose-500 via-pink-600 to-indigo-700'} flex items-center justify-center shadow-md border border-white/20 shrink-0 group-hover:scale-105 transition-transform">
+                ${iconHtml}
               </div>
               <div class="overflow-hidden flex-1 min-w-0">
                 <div class="flex items-center justify-between gap-1.5">
@@ -10415,7 +10445,9 @@ ${rawText.slice(0, 15000)}
           location: '영화 속 명장면',
           description: `${title || '영화 명장면'}의 ${dialogueLines.length}개 연속 대사 실전 롤플레잉 세션입니다.`,
           cover: '🎬',
-          color: 'from-rose-600 to-indigo-900',
+          coverIcon: 'ph-film-slate',
+          coverIconColor: '!text-white',
+          color: 'from-rose-500 via-pink-600 to-indigo-700',
           characters: charArray.length >= 2 ? charArray : [
             { name: 'Character A', role: '주인공 A', avatar: '👩‍💼', voiceGender: 'female' },
             { name: 'Character B', role: '상대역 B', avatar: '👨‍💼', voiceGender: 'male' }
