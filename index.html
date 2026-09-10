@@ -303,12 +303,43 @@
     body.light-mode button.bg-indigo-600,
     body.light-mode .bg-indigo-600,
     body.light-mode .bg-indigo-600 *,
+    body.light-mode button.bg-rose-600,
+    body.light-mode .bg-rose-600,
+    body.light-mode .bg-rose-600 *,
+    body.light-mode button.bg-pink-600,
+    body.light-mode .bg-pink-600,
+    body.light-mode .bg-pink-600 *,
+    body.light-mode button.bg-purple-600,
+    body.light-mode .bg-purple-600,
+    body.light-mode .bg-purple-600 *,
+    body.light-mode #btnOpenUploadScript,
+    body.light-mode #btnOpenUploadScript *,
+    body.light-mode #btnStartParseScript,
+    body.light-mode #btnStartParseScript *,
+    body.light-mode #tabPdfUpload,
+    body.light-mode #tabPdfUpload *,
+    body.light-mode #tabTextInput,
+    body.light-mode #tabTextInput *,
+    body.light-mode .script-mode-btn.active,
+    body.light-mode .script-mode-btn.active *,
+    body.light-mode button[id^="btnInlineRecord_"],
+    body.light-mode button[id^="btnInlineRecord_"] *,
     body.light-mode #btnGenDynamicScenario,
     body.light-mode #btnGenDynamicScenario *,
+    body.light-mode .bg-gradient-to-r.from-rose-600,
+    body.light-mode .bg-gradient-to-r.from-rose-600 *,
+    body.light-mode .bg-gradient-to-tr.from-rose-600,
+    body.light-mode .bg-gradient-to-tr.from-rose-600 *,
     body.light-mode .bg-gradient-to-r.from-blue-600,
     body.light-mode .bg-gradient-to-r.from-blue-600 *,
     body.light-mode .bg-gradient-to-tr.from-blue-600,
-    body.light-mode .bg-gradient-to-tr.from-blue-600 * {
+    body.light-mode .bg-gradient-to-tr.from-blue-600 *,
+    body.light-mode button[class*="from-rose-"],
+    body.light-mode button[class*="from-rose-"] *,
+    body.light-mode button[class*="from-pink-"],
+    body.light-mode button[class*="from-pink-"] *,
+    body.light-mode button[class*="from-purple-"],
+    body.light-mode button[class*="from-purple-"] * {
       color: #ffffff !important;
     }
     body.light-mode #btnGenDynamicScenario i {
@@ -1796,8 +1827,8 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <button onclick="app.showUploadScriptModal()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-extrabold text-xs shadow-md shadow-rose-600/20 flex items-center gap-1.5 transition active:scale-95">
-            <i class="ph-bold ph-file-pdf text-sm"></i> PDF 대본 업로드 / 입력
+          <button id="btnOpenUploadScript" onclick="app.showUploadScriptModal()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 !text-white font-extrabold text-xs shadow-md shadow-rose-600/20 flex items-center gap-1.5 transition active:scale-95">
+            <i class="ph-bold ph-file-pdf text-sm !text-white"></i> <span class="!text-white">PDF 대본 업로드 / 입력</span>
           </button>
           <button onclick="app.goBack()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-bold text-xs border border-slate-700 transition flex items-center gap-1.5 active:scale-95">
             <i class="ph-bold ph-arrow-left"></i> 이전 화면으로
@@ -2031,8 +2062,8 @@
         <!-- Header -->
         <div class="flex items-center justify-between border-b border-slate-800 pb-4">
           <div class="flex items-center gap-2.5">
-            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-600 to-pink-600 flex items-center justify-center text-white text-xl shadow-md">
-              <i class="ph-bold ph-file-pdf"></i>
+            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-600 to-pink-600 flex items-center justify-center !text-white text-xl shadow-md">
+              <i class="ph-bold ph-file-pdf !text-white"></i>
             </div>
             <div>
               <h3 class="text-base sm:text-lg font-extrabold text-white">영화 대본 PDF 업로드 & AI 파서</h3>
@@ -2046,8 +2077,8 @@
 
         <!-- Tab: PDF Upload vs Text Direct Input -->
         <div class="flex items-center gap-2 border-b border-slate-800 pb-2">
-          <button id="tabPdfUpload" onclick="app.switchScriptUploadTab('pdf')" class="px-3 py-1.5 rounded-xl bg-rose-600 text-white text-xs font-bold transition shadow-sm">
-            <i class="ph-bold ph-upload-simple"></i> PDF 파일 업로드
+          <button id="tabPdfUpload" onclick="app.switchScriptUploadTab('pdf')" class="px-3 py-1.5 rounded-xl bg-rose-600 !text-white text-xs font-bold transition shadow-sm">
+            <i class="ph-bold ph-upload-simple !text-white"></i> <span class="!text-white">PDF 파일 업로드</span>
           </button>
           <button id="tabTextInput" onclick="app.switchScriptUploadTab('text')" class="px-3 py-1.5 rounded-xl bg-slate-800 text-slate-300 hover:text-white text-xs font-semibold transition">
             <i class="ph-bold ph-textbox"></i> 텍스트 직접 붙여넣기
@@ -2111,8 +2142,8 @@
           <button onclick="app.hideUploadScriptModal()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold transition">
             취소
           </button>
-          <button id="btnStartParseScript" onclick="app.processAndSaveScript()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white text-xs font-extrabold transition shadow-md shadow-rose-600/30 flex items-center gap-1.5 active:scale-95">
-            <i class="ph-bold ph-sparkle text-amber-300"></i> 대본 20문장 분석 및 시작
+          <button id="btnStartParseScript" onclick="app.processAndSaveScript()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 !text-white text-xs font-extrabold transition shadow-md shadow-rose-600/30 flex items-center gap-1.5 active:scale-95">
+            <i class="ph-bold ph-sparkle text-amber-300"></i> <span class="!text-white">대본 20문장 분석 및 시작</span>
           </button>
         </div>
 
