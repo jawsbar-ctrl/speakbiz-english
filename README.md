@@ -1,6 +1,6 @@
 # SpeakBiz (수안이네 영어공부방) - AI 비즈니스 영어 회화 & 스피킹 튜터
 
-영어 회화 1위 앱 **스픽(Speak)**의 3단계 학습 루프(패턴 드릴 ➔ AI 롤플레잉 ➔ 스마트 피드백)를 벤치마킹하여 제작된 **비즈니스 영어 특화 AI 회화 학습 PWA 웹앱**입니다.
+몰입도 높은 3단계 실전 학습 루프(패턴 드릴 ➔ AI 롤플레잉 ➔ 스마트 피드백)를 바탕으로 제작된 **비즈니스 영어 & 스피킹 특화 AI 회화 학습 PWA 웹앱**입니다.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/jawsbar-ctrl/speakbiz-english)
 
